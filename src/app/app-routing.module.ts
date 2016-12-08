@@ -6,6 +6,7 @@ import {SimulationComponent} from "./simulation/simulation.component";
 const routes: Routes = [
   { path: '', redirectTo: 'project', pathMatch: 'full' },
   { path: 'project', component: ContentComponent },
+  { path: 'project/:projectUrl', component: ContentComponent },
   { path: 'simulation', component: SimulationComponent },
 ];
 
