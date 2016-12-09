@@ -19,12 +19,16 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
     this.projectUrl = this.route.snapshot.params['projectUrl'];
 
-    this.projectsService.loadProjects(this.projectUrl)
+    // this.projectsService.loadProjects(this.projectUrl)
+    this.projectsService.loadProjects('')
       .subscribe(
         (data) => console.log('projectLoading success! ', data),
         (err) => console.log('projectLoading error! ', err),
         () => console.log('projectLoading completed')
       );
+
+    this.projectsService.saveProjects('franz1', {testdata: 'testdata'});
+      // .then((xx) => console.log('xx', xx));
   }
 
 }

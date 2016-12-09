@@ -14,7 +14,6 @@ export class ContentLoadService {
   ) { }
 
   loadProjects(userId: string):Observable<any> {
-
     if (this.configService.config.projectSource.type === 'mockdata') {
       let mockDataUrl = this.configService.config.projectSource.mockDataUrl;
       return this.mockdataService.loadProjects(mockDataUrl);
@@ -22,6 +21,9 @@ export class ContentLoadService {
       this.firebaseService.loadProjects(userId);
       return Observable.from(['observable in content-load-service from User: ' + userId]);
     }
+  }
 
+  saveProjects(userId: string, data: any):any {
+    return this.firebaseService.saveProjects(userId, data);
   }
 }

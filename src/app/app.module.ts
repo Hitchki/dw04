@@ -12,6 +12,8 @@ import {ProjectsService} from "./shared/model/projects/projects.service";
 import {ContentLoadService} from "./shared/model/content-load/content-load.service";
 import {MockdataService} from "./shared/mockdata/mockdata.service";
 import {FirebaseService} from "./shared/firebase/firebase.service";
+import {firebaseConfig} from "../environments/firebase.config";
+import { AngularFireModule } from 'angularfire2/index';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {FirebaseService} from "./shared/firebase/firebase.service";
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     ContentModule,
     SimulationModule
   ],

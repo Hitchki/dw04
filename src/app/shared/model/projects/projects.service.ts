@@ -21,4 +21,8 @@ export class ProjectsService {
     // return Observable.from(['observable in projectsService from projectUrl: ' + projectUrl]);
   }
 
+  saveProjects(userId: string, data: any):any {
+    return this.contentLoadService.saveProjects(userId, data);
+  }
+
 }
