@@ -32,5 +32,4 @@ export class PlaygroundComponent implements OnInit {
     console.log('saveProject', this.database.save_with_name);
   }
 
-
 }
