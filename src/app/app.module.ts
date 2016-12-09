@@ -14,6 +14,7 @@ import {MockdataService} from "./shared/mockdata/mockdata.service";
 import {FirebaseService} from "./shared/firebase/firebase.service";
 import {firebaseConfig} from "../environments/firebase.config";
 import { AngularFireModule } from 'angularfire2/index';
+import {PlaygroundModule} from "./playground/playground.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AngularFireModule } from 'angularfire2/index';
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     ContentModule,
-    SimulationModule
+    SimulationModule,
+    PlaygroundModule
   ],
   providers: [ProjectsService, ConfigService, ContentLoadService, MockdataService, FirebaseService],
   bootstrap: [AppComponent]
