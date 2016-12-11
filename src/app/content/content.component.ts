@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.projectUrl = this.route.snapshot.params['projectUrl'];
+    this.buildUrlPath(this.projectUrl);
 
     // this.projectsService.loadProjects(this.projectUrl)
     this.projectsService.loadProjects('')
@@ -28,6 +29,10 @@ export class ContentComponent implements OnInit {
         (err) => console.log('projectLoading error! ', err),
         () => console.log('projectLoading completed')
       );
+  }
+
+  buildUrlPath(projectUrl: string) {
+    
   }
 
 }

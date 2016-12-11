@@ -1,5 +1,5 @@
 import { ContentNodesService } from './content-nodes.service';
-import {RoutePathItem, RoutePath, ContentPathItem, ContentPathItems, ContentNodes} from "./content-nodes";
+import {RoutePathItem, RoutePath, ContentPathItem, ContentPath, ContentNodes} from "./content-nodes";
 
 describe('ContentNodesService without the TestBed - getPathItems', () => {
   let service: ContentNodesService;

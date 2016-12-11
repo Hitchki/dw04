@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import {RoutePathItem, RoutePath, ContentPathItem, ContentPathItems, ContentNodes} from "./content-nodes";
+import {RoutePathItem, RoutePath, ContentPathItem, ContentPath, ContentNodes} from "./content-nodes";
 
 @Injectable()
 export class ContentNodesService {
@@ -10,7 +10,7 @@ export class ContentNodesService {
 
   getPathItems(contentNodes: ContentNodes, path: RoutePath) {
     var pathLevel = pathLevel ? pathLevel + 1 : 0;
-    var contentPathItems: ContentPathItems = contentPathItems ? contentPathItems : [];
+    var contentPathItems: ContentPath = contentPathItems ? contentPathItems : [];
     // if (!contentNodes || !path || !path[pathLevel] || !contentNodes[path[pathLevel]]) {
     if (!contentNodes || !path || !path[pathLevel]) {
       console.log('nix params');
