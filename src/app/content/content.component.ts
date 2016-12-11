@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectsService} from "../shared/model/projects/projects.service";
 import {Router, ActivatedRoute} from "@angular/router";
+import {ContentPathService} from "../shared/model/content-path/content-path.service";
 
 @Component({
   selector: 'app-content',
@@ -13,7 +14,8 @@ export class ContentComponent implements OnInit {
   constructor(
     // private router: Router,
     private route: ActivatedRoute,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private contentPathService: ContentPathService
   ) { }
 
   ngOnInit() {
@@ -26,9 +28,6 @@ export class ContentComponent implements OnInit {
         (err) => console.log('projectLoading error! ', err),
         () => console.log('projectLoading completed')
       );
-
-    this.projectsService.saveProjects('franz1', {testdata: 'testdata'});
-      // .then((xx) => console.log('xx', xx));
   }
 
 }

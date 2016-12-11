@@ -15,6 +15,7 @@ import {FirebaseService} from "./shared/firebase/firebase.service";
 import {firebaseConfig} from "../environments/firebase.config";
 import { AngularFireModule } from 'angularfire2/index';
 import {PlaygroundModule} from "./playground/playground.module";
+import {ContentPathService} from "./shared/model/content-path/content-path.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {PlaygroundModule} from "./playground/playground.module";
     SimulationModule,
     PlaygroundModule
   ],
-  providers: [ProjectsService, ConfigService, ContentLoadService, MockdataService, FirebaseService],
+  providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

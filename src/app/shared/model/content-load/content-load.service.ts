@@ -6,16 +6,19 @@ import {MockdataService} from "../../mockdata/mockdata.service";
 
 @Injectable()
 export class ContentLoadService {
+  private config: any;
 
   constructor(
     private configService: ConfigService,
     private firebaseService: FirebaseService,
     private mockdataService: MockdataService,
-  ) { }
+  ) {
+    this.config = this.configService.config;
+  }
 
-  loadProjects(userId: string):Observable<any> {
-    if (this.configService.config.projectSource.type === 'mockdata') {
-      let mockDataUrl = this.configService.config.projectSource.mockDataUrl;
+  loadProjects(userId: string, useMockdata?: true, useMockdataUrl?: string):Observable<any> {
+    if (this.config.projectSource.type === 'mockdata' || useMockdata) {
+      let mockDataUrl = useMockdataUrl ? useMockdataUrl :this.config.projectSource.mockDataUrl;
       return this.mockdataService.loadProjects(mockDataUrl);
     } else {
       this.firebaseService.loadProjects(userId);
