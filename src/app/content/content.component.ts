@@ -11,10 +11,11 @@ import {RoutePath} from "../shared/model/content-nodes/content-nodes";
 })
 export class ContentComponent implements OnInit {
   private projectUrl: string;
-  private projectUrl1: string;
+  private subProjectUrl: string;
+  private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
 
   constructor(
-    // private router: Router,
+    private router: Router,
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
     private contentPathService: ContentPathService
@@ -22,7 +23,9 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     this.projectUrl = this.route.snapshot.params['projectUrl'];
-    this.buildUrlPath(this.projectUrl);
+    // this.buildUrlPath(this.projectUrl);
+    this.subProjectUrl = this.route.snapshot.params['subprojects'];
+    // this.buildUrlPath(this.projectUrl);
 
     // this.projectsService.loadProjects(this.projectUrl)
     this.projectsService.loadProjects('')
@@ -31,6 +34,14 @@ export class ContentComponent implements OnInit {
         (err) => console.log('projectLoading error! ', err),
         () => console.log('projectLoading completed')
       );
+  }
+
+  navigateByUrl(testUrl) {
+    this.router.navigateByUrl(encodeURI(testUrl));
+  }
+
+  navigateTo(testUrl) {
+    this.router.navigate(['/projects', 1,'subprojects', 2 ]);
   }
 
   buildUrlPath(projectUrl: string) {

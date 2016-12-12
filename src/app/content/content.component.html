@@ -3,5 +3,20 @@
 </p>
 <dw-nav-content></dw-nav-content>
 
-<input [(ngModel)]="projectUrl" placeholder="projectUrl" />
+<div>
+  <label for="testUrl">testUrl:</label><input [(ngModel)]="testUrl" placeholder="testUrl" id="testUrl"/>
+  <button (click)="navigateByUrl(testUrl)">navigateByUrl</button>
+</div>
+
+<div>
+  <label for="testUrl">testUrl:</label>
+  <button (click)="navigateTo(testUrl)">navigateTo</button>
+</div>
+
+<div>
+  <label for="projectUrl">projectUrl:</label><input [(ngModel)]="projectUrl" placeholder="projectUrl" id="projectUrl"/>
+</div>
+<div>
+  <label for="subProjectUrl">subProjectUrl:</label><input [(ngModel)]="subProjectUrl" placeholder="subProjectUrl" id="subProjectUrl"/>
+</div>
 <button (click)="getProject(projectUrl)">GetProject</button>
