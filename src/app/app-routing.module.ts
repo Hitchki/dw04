@@ -11,7 +11,7 @@ const routes: Routes = [
   // { path: 'projects/:projectUrl/subprojects', component: ContentComponent },
   // { path: 'projects/:projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
 
-  { path: 'simulation', component: SimulationComponent },
+  // { path: 'simulation', component: SimulationComponent },
   { path: 'playground', component: PlaygroundComponent },
   { path: 'playground/:projectUrl', component: PlaygroundComponent },
 ];

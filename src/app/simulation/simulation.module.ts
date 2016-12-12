@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SimulationComponent } from './simulation.component';
+import {SimulationRoutingModule} from "./simulation-routing.module";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    SimulationRoutingModule
   ],
   declarations: [SimulationComponent]
 })
