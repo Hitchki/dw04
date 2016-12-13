@@ -16,20 +16,22 @@ import {firebaseConfig} from "../environments/firebase.config";
 import { AngularFireModule } from 'angularfire2/index';
 import {PlaygroundModule} from "./playground/playground.module";
 import {ContentPathService} from "./shared/model/content-path/content-path.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     ContentModule,
     SimulationModule,
-    PlaygroundModule
+    PlaygroundModule,
+    AppRoutingModule,
   ],
   providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService],
   bootstrap: [AppComponent]

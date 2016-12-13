@@ -3,14 +3,26 @@
 </p>
 <dw-nav-content></dw-nav-content>
 
+<div>route.params: {{ route.params | async | json }}</div>
+<div>route.url: {{ route.url | async | json }}</div>
+<div>route.data: {{ route.data | async | json }}</div>
+
 <div>
-  <label for="testUrl">testUrl:</label><input [(ngModel)]="testUrl" placeholder="testUrl" id="testUrl"/>
-  <button (click)="navigateByUrl(testUrl)">navigateByUrl</button>
+  <a routerLink="/projects/2/subprojects/1" routerLinkActive="abcd">projects</a>
+</div>
+<div>
+  ['projects', 1, 'subprojects', 2]
+  <button [routerLink]="['/projects', 1, 'subprojects', 2]"></button>
 </div>
 
 <div>
-  <label for="testUrl">testUrl:</label>
-  <button (click)="navigateTo(testUrl)">navigateTo</button>
+  <button (click)="testNavigation()">testNavigation</button>
+</div>
+
+
+<div>
+  <label for="testUrl">testUrl:</label><input [(ngModel)]="testUrl" placeholder="testUrl" id="testUrl"/>
+  <button (click)="navigateByUrl(testUrl)">navigateByUrl</button>
 </div>
 
 <div>
@@ -20,3 +32,6 @@
   <label for="subProjectUrl">subProjectUrl:</label><input [(ngModel)]="subProjectUrl" placeholder="subProjectUrl" id="subProjectUrl"/>
 </div>
 <button (click)="getProject(projectUrl)">GetProject</button>
+
+
+

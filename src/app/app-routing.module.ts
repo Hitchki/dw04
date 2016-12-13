@@ -3,17 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import {ContentComponent} from "./content/content.component";
 import {SimulationComponent} from "./simulation/simulation.component";
 import {PlaygroundComponent} from "./playground/playground.component";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'projects', pathMatch: 'full' },
-  // { path: 'projects', component: ContentComponent },
-  // { path: 'projects/:projectUrl', component: ContentComponent },
-  // { path: 'projects/:projectUrl/subprojects', component: ContentComponent },
-  // { path: 'projects/:projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
-
-  // { path: 'simulation', component: SimulationComponent },
   { path: 'playground', component: PlaygroundComponent },
   { path: 'playground/:projectUrl', component: PlaygroundComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

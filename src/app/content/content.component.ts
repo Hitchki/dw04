@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProjectsService} from "../shared/model/projects/projects.service";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router, ActivatedRoute, Params} from "@angular/router";
 import {ContentPathService} from "../shared/model/content-path/content-path.service";
 import {RoutePath} from "../shared/model/content-nodes/content-nodes";
 
@@ -22,10 +22,31 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.projectUrl = this.route.snapshot.params['projectUrl'];
+    // this.projectUrl = this.route.snapshot.params['projectUrl'];
+    // this.subProjectUrl = this.route.snapshot.params['subprojects'];
     // this.buildUrlPath(this.projectUrl);
-    this.subProjectUrl = this.route.snapshot.params['subprojects'];
-    // this.buildUrlPath(this.projectUrl);
+
+    // this.heroes = this.route.params
+    //   .switchMap((params: Params) => {
+    //     this.selectedId = +params['id'];
+    //     return this.service.getHeroes();
+    //   });
+
+    // this.route.params
+    //   .forEach((params) => {
+    //     console.log('activatedRoute', this.route);
+    //     this.projectUrl = params['projectUrl'];
+    //     this.subProjectUrl = params['subProjectUrl'];
+    //     // return this.service.getHeroes();
+    //   });
+
+    this.route.params
+      .forEach((params) => {
+        // console.log('activatedRoute', this.route);
+        this.projectUrl = params['projectUrl'];
+        this.subProjectUrl = params['subProjectUrl'];
+        // return this.service.getHeroes();
+      });
 
     // this.projectsService.loadProjects(this.projectUrl)
     this.projectsService.loadProjects('')
@@ -36,12 +57,10 @@ export class ContentComponent implements OnInit {
       );
   }
 
-  navigateByUrl(testUrl) {
-    this.router.navigateByUrl(encodeURI(testUrl));
-  }
 
-  navigateTo(testUrl) {
-    this.router.navigate(['/projects', 1,'subprojects', 2 ]);
+  testNavigation() {
+    this.router.navigate(['/projects', 3, 'subprojects', 3], {relativeTo: this.route});
+    // this.router.navigate([3, 'subprojects', 3]);
   }
 
   buildUrlPath(projectUrl: string) {

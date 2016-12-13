@@ -6,10 +6,10 @@ const contentRoutes: Routes = [
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'projects', component: ContentComponent },
   { path: 'projects/:projectUrl', component: ContentComponent },
-  { path: 'projects/:projectUrl/:subProjectUrl', component: ContentComponent },
+  // { path: 'projects/:projectUrl/:subProjectUrl', component: ContentComponent },
   // { path: 'projects/:projectUrl', component: ContentComponent },
-  // { path: 'projects/:projectUrl/subprojects', component: ContentComponent },
-  // { path: 'projects/:projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
+  { path: 'projects/:projectUrl/subprojects', component: ContentComponent },
+  { path: 'projects/:projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
 ];
 
 @NgModule({
