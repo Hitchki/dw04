@@ -5,18 +5,13 @@ import {NavContentModule} from "./nav-content/nav-content.module";
 import {ProjectsService} from "../shared/model/projects/projects.service";
 import {FormsModule} from "@angular/forms";
 import {Routes, RouterModule} from "@angular/router";
-
-// const routes1: Routes = [
-//   // { path: '', redirectTo: 'projects', pathMatch: 'full' },
-//   { path: ':projectUrl', component: ContentComponent },
-//   { path: ':projectUrl/subprojects', component: ContentComponent },
-//   { path: ':projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
-// ];
+import {ContentRoutingModule} from "./content-routing.module";
 
 @NgModule({
   imports: [
     // RouterModule.forChild(routes1),
     CommonModule,
+    ContentRoutingModule,
     FormsModule,
     NavContentModule
   ],

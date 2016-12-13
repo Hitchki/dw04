@@ -5,9 +5,9 @@ import {SimulationComponent} from "./simulation/simulation.component";
 import {PlaygroundComponent} from "./playground/playground.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'projects', pathMatch: 'full' },
-  { path: 'projects', component: ContentComponent },
-  { path: 'projects/:projectUrl', component: ContentComponent },
+  // { path: '', redirectTo: 'projects', pathMatch: 'full' },
+  // { path: 'projects', component: ContentComponent },
+  // { path: 'projects/:projectUrl', component: ContentComponent },
   // { path: 'projects/:projectUrl/subprojects', component: ContentComponent },
   // { path: 'projects/:projectUrl/subprojects/:subProjectUrl', component: ContentComponent },
 
