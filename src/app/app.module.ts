@@ -20,6 +20,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {AdminRoutingModule} from "./admin/admin-routing.module";
 import {AdminComponent} from "./admin/admin.component";
 import {AdminModule} from "./admin/admin.module";
+import {PlaygroundRoutingModule} from "./playground/playground-routing.module";
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
@@ -31,10 +33,11 @@ import {AdminModule} from "./admin/admin.module";
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    UserModule,
     ContentModule,
     AdminModule,
-    SimulationModule,
     PlaygroundModule,
+    SimulationModule,
     AppRoutingModule,
   ],
   providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService],

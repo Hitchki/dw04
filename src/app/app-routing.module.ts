@@ -6,8 +6,6 @@ import {PlaygroundComponent} from "./playground/playground.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
-  { path: 'playground', component: PlaygroundComponent },
-  { path: 'playground/:projectUrl', component: PlaygroundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
