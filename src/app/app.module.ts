@@ -17,6 +17,9 @@ import { AngularFireModule } from 'angularfire2/index';
 import {PlaygroundModule} from "./playground/playground.module";
 import {ContentPathService} from "./shared/model/content-path/content-path.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {AdminRoutingModule} from "./admin/admin-routing.module";
+import {AdminComponent} from "./admin/admin.component";
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     ContentModule,
+    AdminModule,
     SimulationModule,
     PlaygroundModule,
     AppRoutingModule,

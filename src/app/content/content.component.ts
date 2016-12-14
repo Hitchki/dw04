@@ -59,7 +59,7 @@ export class ContentComponent implements OnInit {
 
 
   testNavigation() {
-    this.router.navigate(['/projects', 3, 'subprojects', 3], {relativeTo: this.route});
+    this.router.navigate(['/projects', 3, 'subprojects', 3, {foo0: 'foo'} ], {relativeTo: this.route});
     // this.router.navigate([3, 'subprojects', 3]);
   }
 
