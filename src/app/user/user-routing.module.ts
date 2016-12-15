@@ -6,7 +6,7 @@ import {UserComponent} from "./user.component";
 const userRoutes: Routes =
 [
   {
-    path: 'user',
+    path: 'user/:userId',
     component: UserComponent,
     children:
     [{
@@ -16,21 +16,24 @@ const userRoutes: Routes =
       [{
         path: ''
       }, {
-        path: '/:projectsUrl',
-        children: [{}]
+        path: ':projectsUrl',
+        // children: [{}]
       }]
-    }, {
-      path: ':projectsUrl',
-      children:
-      [{
-        path: '',
-        component: ContentComponent,
-        children: [{
-          path: ':subProjectsUrl',
-        }
-        ]
-      }]
-    }]
+    }
+    // , {
+    //   path: ':projectsUrl',
+    //   children:
+    //   [{
+    //     path: '',
+    //     component: ContentComponent,
+    //     children: [{
+    //       // path: ':subProjectsUrl',
+    //
+    //     }
+    //     ]
+    //   }]
+    // }
+    ]
   }
 ];
 
