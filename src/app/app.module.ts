@@ -22,6 +22,8 @@ import {AdminComponent} from "./admin/admin.component";
 import {AdminModule} from "./admin/admin.module";
 import {PlaygroundRoutingModule} from "./playground/playground-routing.module";
 import {UserModule} from "./user/user.module";
+import {UserLinkComponent} from "./user-link/user-link.component";
+import {UserLinkModule} from "./user-link/user-link.module";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {UserModule} from "./user/user.module";
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     UserModule,
+    UserLinkModule,
     ContentModule,
     AdminModule,
     PlaygroundModule,

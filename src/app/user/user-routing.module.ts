@@ -5,36 +5,17 @@ import {UserComponent} from "./user.component";
 
 const userRoutes: Routes =
 [
-  {
-    path: 'user/:userId',
-    component: UserComponent,
-    children:
-    [{
-      path: 'projects',
-      component: ContentComponent,
-      children:
-      [{
-        path: ''
-      }, {
-        path: ':projectsUrl',
-        // children: [{}]
-      }]
-    }
-    // , {
-    //   path: ':projectsUrl',
-    //   children:
-    //   [{
-    //     path: '',
-    //     component: ContentComponent,
-    //     children: [{
-    //       // path: ':subProjectsUrl',
-    //
-    //     }
-    //     ]
-    //   }]
-    // }
-    ]
-  }
+  { path: 'user/:0', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1', component: UserComponent },
 ];
 
 @NgModule({
@@ -42,5 +23,5 @@ const userRoutes: Routes =
   exports: [RouterModule],
   providers: []
 })
-export class UsrRoutingModule { }
+export class UserRoutingModule { }
 
