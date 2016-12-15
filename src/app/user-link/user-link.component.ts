@@ -9,8 +9,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class UserLinkComponent implements OnInit {
 
   constructor(
-    route: ActivatedRoute,
-    router: Router)
+    private route: ActivatedRoute,
+    private router: Router)
   { }
 
   ngOnInit() {

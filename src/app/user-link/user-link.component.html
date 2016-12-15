@@ -1,3 +1,13 @@
 <p>
   user-link works!
 </p>
+
+<table>
+  <tr>  <td>"route.params"</td>     <td>{{ route.params | async | json }}</td> </tr>
+  <tr>  <td>"route.url"</td>        <td>{{ route.url | async | json }}</td> </tr>
+  <tr>  <td>"route.data"</td>       <td>{{ route.data | async | json }}</td> </tr>
+  <tr>  <td>"route.config"</td>     <td>{{ route.config | async | json }}</td> </tr>
+  <tr>  <td>"route.outlet"</td>     <td>{{ route.outlet | json }}</td> </tr>
+  <tr>  <td>"route.parent"</td>     <td>{{ route.parent }}</td> </tr>
+  <tr>  <td>"route.children"</td>   <td>{{ route.children }}</td> </tr>
+</table>
