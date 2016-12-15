@@ -14,7 +14,13 @@ export class UserLinkComponent implements OnInit {
   { }
 
   ngOnInit() {
+    this.route.queryParams
+      .do(console.log.bind(this, 'queryParams'))
+      .subscribe();
 
+    this.route.fragment
+      .do(console.log.bind(this, 'fragment'))
+      .subscribe()
   }
 
 }

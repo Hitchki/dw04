@@ -2,12 +2,20 @@
   user-link works!
 </p>
 
+<a routerLink="/user-link/user-franz-projects-1-subprojects-1">biglink</a>
+
+<a [routerLink]="['/user-link/projects']" [queryParams]="{debug: true}" fragment="education">
+  link to user component
+</a>
+
 <table>
-  <tr>  <td>"route.params"</td>     <td>{{ route.params | async | json }}</td> </tr>
-  <tr>  <td>"route.url"</td>        <td>{{ route.url | async | json }}</td> </tr>
-  <tr>  <td>"route.data"</td>       <td>{{ route.data | async | json }}</td> </tr>
-  <tr>  <td>"route.config"</td>     <td>{{ route.config | async | json }}</td> </tr>
-  <tr>  <td>"route.outlet"</td>     <td>{{ route.outlet | json }}</td> </tr>
-  <tr>  <td>"route.parent"</td>     <td>{{ route.parent }}</td> </tr>
-  <tr>  <td>"route.children"</td>   <td>{{ route.children }}</td> </tr>
+  <tr>  <td>"route.path"</td>         <td>{{ route.path | async | json }}</td> </tr>
+  <tr>  <td>"route.params"</td>       <td>{{ route.params | async | json }}</td> </tr>
+  <tr>  <td>"route.queryParams"</td>  <td>{{ route.queryParams | async | json }}</td> </tr>
+  <tr>  <td>"route.url"</td>          <td>{{ route.url | async | json }}</td> </tr>
+  <tr>  <td>"route.data"</td>         <td>{{ route.data | async | json }}</td> </tr>
+  <tr>  <td>"route.config"</td>       <td>{{ route.config | async | json }}</td> </tr>
+  <tr>  <td>"route.outlet"</td>       <td>{{ route.outlet | json }}</td> </tr>
+  <tr>  <td>"route.parent"</td>       <td>{{ route.parent }}</td> </tr>
+  <tr>  <td>"route.children"</td>     <td>{{ route.children }}</td> </tr>
 </table>
