@@ -24,8 +24,6 @@ export class UserLinkComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams
-      // .do(console.log.bind(this, 'queryParams'))
-      // .do((xx) => console.log('xxxx', xx))
       .subscribe(
         // (xx) => this.userId = xx;
         (queryParams) => { this.queryParams = queryParams; console.debug('this.queryParams', this.queryParams) }
