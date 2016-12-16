@@ -13,6 +13,7 @@ export class UserLinkComponent implements OnInit {
   private userId: string;
   private fragment: string;
   private project: any;
+  private queryParams: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +24,18 @@ export class UserLinkComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams
-      .do(console.log.bind(this, 'queryParams'))
+      // .do(console.log.bind(this, 'queryParams'))
+      // .do((xx) => console.log('xxxx', xx))
       .subscribe(
-        // () => this.userId = ;
+        // (xx) => this.userId = xx;
+        (queryParams) => { this.queryParams = queryParams; console.debug('this.queryParams', this.queryParams) }
       );
 
     this.route.fragment
+      // .do(console.log.bind(this, 'fragment'))
       .subscribe(
         { next: (fragment) => { this.fragment = fragment; console.debug(this.fragment) } }
+        // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
       );
 
     this.userId = this.getUserId();
