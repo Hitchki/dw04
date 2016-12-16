@@ -5,7 +5,7 @@ import {ContentPathService} from "../shared/model/content-path/content-path.serv
 import {RoutePath} from "../shared/model/content-nodes/content-nodes";
 
 @Component({
-  selector: 'app-content',
+  selector: 'dw-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })

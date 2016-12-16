@@ -15,6 +15,9 @@ import {ContentRoutingModule} from "./content-routing.module";
     FormsModule,
     NavContentModule
   ],
+  exports: [
+    ContentComponent
+  ],
   declarations: [ContentComponent],
   providers: [ProjectsService]
 })

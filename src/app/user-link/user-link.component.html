@@ -10,6 +10,11 @@
   link to user component
 </a>
 
+<div>
+  <dw-content></dw-content>
+</div>
+
+
 <table>
   <tr>  <td>"route.path"</td>         <td>{{ route.path | async | json }}</td> </tr>
   <tr>  <td>"route.params"</td>       <td>{{ route.params | async | json }}</td> </tr>
@@ -22,7 +27,3 @@
   <tr>  <td>"route.parent"</td>       <td>{{ route.parent }}</td> </tr>
   <tr>  <td>"route.children"</td>     <td>{{ route.children }}</td> </tr>
 </table>
-
-<div>
-  <dw-content></dw-content>
-</div>
