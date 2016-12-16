@@ -21,8 +21,8 @@ export class ContentLoadService {
       let mockDataUrl = useMockdataUrl ? useMockdataUrl :this.config.projectSource.mockDataUrl;
       return this.mockdataService.loadProjects(mockDataUrl);
     } else {
-      this.firebaseService.loadProjects(userId);
-      return Observable.from(['observable in content-load-service from User: ' + userId]);
+      return this.firebaseService.loadProjects(userId);
+      // return Observable.from(['observable in content-load-service from User: ' + userId]);
     }
   }
 
