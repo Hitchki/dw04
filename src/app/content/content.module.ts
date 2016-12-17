@@ -6,6 +6,8 @@ import {ProjectsService} from "../shared/model/projects/projects.service";
 import {FormsModule} from "@angular/forms";
 import {Routes, RouterModule} from "@angular/router";
 import {ContentRoutingModule} from "./content-routing.module";
+import {MainContentModule} from "./main-content/main-content.module";
+import {InfoContentModule} from "./info-content/info-content.module";
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import {ContentRoutingModule} from "./content-routing.module";
     CommonModule,
     ContentRoutingModule,
     FormsModule,
-    NavContentModule
+    NavContentModule,
+    MainContentModule,
+    InfoContentModule
   ],
   exports: [
     ContentComponent

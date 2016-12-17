@@ -6,13 +6,13 @@ import {ContentPathService} from "../shared/model/content-path/content-path.serv
 @Component({
   selector: 'app-user-link',
   templateUrl: './user-link.component.html',
-  styleUrls: ['./user-link.component.css']
+  styleUrls: ['./user-link.component.css'],
 })
 export class UserLinkComponent implements OnInit {
 
   private userId: string;
   private fragment: string;
-  private project: any;
+  private projects: any;
   private queryParams: any;
 
   constructor(
@@ -38,9 +38,14 @@ export class UserLinkComponent implements OnInit {
 
     this.userId = this.getUserId();
 
-    this.contentLoadService.loadProjects('franz')
+    this.contentLoadService.loadProjects('franz1')
       .subscribe(
-        { next: (project) => { this.project = project; console.debug('this.project', this.project) } }
+        { next: (projects) => {
+          this.projects = projects[0];
+          console.debug('this.projects', this.projects);
+          console.debug('this.projects[0]', this.projects[0])
+        }
+        }
       );
 
     // this.project = this.contentLoadService.loadProjects(this.userId) || undefined;
@@ -53,4 +58,7 @@ export class UserLinkComponent implements OnInit {
     return this.fragment ? this.fragment.split('/')[1] : undefined;
   }
 
+  onContentClick(event) {
+    alert('onContentClick' + event);
+  }
 }

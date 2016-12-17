@@ -1,0 +1,5 @@
+.flex-item {
+  flex-grow: 1;
+  color: aqua;
+  border: 1px solid blueviolet;
+}

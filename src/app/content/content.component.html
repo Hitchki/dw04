@@ -1,39 +1,22 @@
 <p>
   content component works!
 </p>
-<dw-nav-content></dw-nav-content>
 
-<!--<div>route.params: {{ route.params | async | json }}</div>-->
-<!--<div>route.url: {{ route.url | async | json }}</div>-->
-<!--<div>route.data: {{ route.data | async | json }}</div>-->
+<div style="background-color: brown" (click)="click($event)">Das ist der Name{{name}}</div>
 
-<!--<div>-->
-  <!--<a routerLink="/projects/2/subprojects/1" routerLinkActive="abcd">projects</a>-->
-<!--</div>-->
-<!--<div>-->
-  <!--['projects', 1, 'subprojects', 2]-->
-  <!--<button [routerLink]="['/projects', 1, 'subprojects', 2]"></button>-->
-<!--</div>-->
+<div>
+  <div *ngFor="let project of projects; let i=index; let node=project" #item (click)="onClickNode(node, $event, i, item)">
+    <i class="fa fa-plus-circle" aria-hidden="true" color="blue">xxx</i>
+    <pre>title: {{project.properties.title}}</pre>
+  </div>
+  <!--<div *ngFor="let project of projects"><pre>{{project | json}}</pre></div>-->
+</div>
 
-<!--<div>-->
-  <!--<button (click)="testNavigation()">testNavigation</button>-->
-<!--</div>-->
-
-
-<!--<div>-->
-  <!--<label for="testUrl">testUrl:</label><input [(ngModel)]="testUrl" placeholder="testUrl" id="testUrl"/>-->
-  <!--<button (click)="navigateByUrl(testUrl)">navigateByUrl</button>-->
-<!--</div>-->
-
-<!--<div>-->
-  <!--<label for="projectUrl">projectUrl:</label><input [(ngModel)]="projectUrl" placeholder="projectUrl" id="projectUrl"/>-->
-<!--</div>-->
-<!--<div>-->
-  <!--<label for="subProjectUrl">subProjectUrl:</label><input [(ngModel)]="subProjectUrl" placeholder="subProjectUrl" id="subProjectUrl"/>-->
-<!--</div>-->
-<!--<button (click)="getProject(projectUrl)">GetProject</button>-->
+<div class="flex-container">
+  <dw-nav-content></dw-nav-content>
+  <dw-main-content></dw-main-content>
+  <dw-info-content></dw-info-content>
+</div>
 
 
-router-outlet
-<!--<router-outlet name="content"></router-outlet>-->
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
