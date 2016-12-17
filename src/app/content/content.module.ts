@@ -8,6 +8,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {ContentRoutingModule} from "./content-routing.module";
 import {MainContentModule} from "./main-content/main-content.module";
 import {InfoContentModule} from "./info-content/info-content.module";
+import {EditModule} from "./edit/edit.module";
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import {InfoContentModule} from "./info-content/info-content.module";
     FormsModule,
     NavContentModule,
     MainContentModule,
-    InfoContentModule
+    InfoContentModule,
+    EditModule
   ],
   exports: [
     ContentComponent

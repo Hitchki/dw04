@@ -47,6 +47,17 @@ export class ContentComponent implements OnInit {
     let routePath:RoutePath = this.contentPathService.getUrlPath(projectUrl);
   }
 
+  onInsertNode(editNode) {
+    console.debug('insertNode', editNode);
+  }
+
+  onDeleteNode(deleteNode) {
+    console.debug('deleteNode', deleteNode);
+  }
+
+  onAddNodeLevel(node) {
+    console.debug('addNodeLevel', node);
+  }
 }
 
 
