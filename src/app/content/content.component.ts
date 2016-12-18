@@ -12,11 +12,11 @@ import {RoutePath} from "../shared/model/content-nodes/content-nodes";
 export class ContentComponent implements OnInit {
   @Input() name: string;
   @Input() projects: any;
-  @Output() onSelectNode = new EventEmitter<number>();
-  @Output() onClick = new EventEmitter<number>();
+  // @Output() onSelectNode = new EventEmitter<number>();
+  // @Output() onClick = new EventEmitter<number>();
   private projectUrl: string;
   private subProjectUrl: string;
-  private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
+  // private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
 
   constructor(
     private router: Router,
@@ -28,11 +28,11 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
   }
 
-  click($event) {
-    console.log($event);
-    $event.target.innerHTML += " ...ich wurde geklickt!!"
-    this.onClick.emit(23);
-  }
+  // click($event) {
+  //   console.log($event);
+  //   $event.target.innerHTML += " ...ich wurde geklickt!!"
+  //   this.onClick.emit(23);
+  // }
 
   onClickNode(project, $event, i, item) {
     console.debug('onClickNode', project, $event, i, item);
@@ -47,17 +47,17 @@ export class ContentComponent implements OnInit {
     let routePath:RoutePath = this.contentPathService.getUrlPath(projectUrl);
   }
 
-  onInsertNode(editNode) {
-    console.debug('insertNode', editNode);
-  }
-
-  onDeleteNode(deleteNode) {
-    console.debug('deleteNode', deleteNode);
-  }
-
-  onAddNodeLevel(node) {
-    console.debug('addNodeLevel', node);
-  }
+  // onInsertNode(editNode) {
+  //   console.debug('insertNode', editNode);
+  // }
+  //
+  // onDeleteNode(deleteNode) {
+  //   console.debug('deleteNode', deleteNode);
+  // }
+  //
+  // onAddNodeLevel(node) {
+  //   console.debug('addNodeLevel', node);
+  // }
 }
 
 

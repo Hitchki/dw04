@@ -2,30 +2,9 @@
   content component works!
 </p>
 
-<!--<div style="background-color: brown" (click)="click($event)">Das ist der Name{{name}}</div>-->
-
-<div>
-  <div *ngFor="let project of projects; let i=index;" #item>
-    <!--<div *ngFor="let project of projects; let i=index;" #item (click1)="onClickNode(node, $event, i, item)">-->
-    <!--<i class="fa fa-plus-circle" aria-hidden="true" color="blue">xxx</i>-->
-    <!--<pre>title: {{project.properties.title}}</pre>-->
-    <span>{{project.properties.title}}</span>
-    <dw-edit
-      [editNode]="{node: project, index: i}"
-      (onInsertNode)="onInsertNode($event)"
-      (onDeleteNode)="onDeleteNode($event)"
-      (onAddNodeLevel)="onAddNodeLevel($event)"
-      >
-    </dw-edit>
-  </div>
-  <!--<div *ngFor="let project of projects"><pre>{{project | json}}</pre></div>-->
-</div>
-
 <div class="flex-container">
   <dw-nav-content [projects]="projects"></dw-nav-content>
   <dw-main-content></dw-main-content>
   <dw-info-content></dw-info-content>
 </div>
 
-
-<!--<router-outlet></router-outlet>-->
