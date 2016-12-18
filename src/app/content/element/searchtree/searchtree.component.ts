@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'dw-searchtree',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./searchtree.component.css']
 })
 export class SearchtreeComponent implements OnInit {
+  @Input() dwNodes: any;
 
   constructor() { }
 

@@ -1,11 +1,11 @@
-<p>
-  normtext works!
-</p>
-
-<div *ngFor="let textNode of textNodes; let i=index;" #item>
-  <span>{{textNode.properties.title}}</span>
+<!--<p>-->
+  <!--normtext works!-->
+<!--</p>-->
+<!--<pre>{{dwNodes | json}}</pre>-->
+<div *ngFor="let dwNode of dwNodes; let i=index;" #item>
+  <span>{{dwNode.properties.title}}</span>
   <dw-edit
-    [editNode]="{node: textNode, index: i}"
+    [editNode]="{node: dwNode, index: i}"
     (onInsertNode)="onInsertNode($event)"
     (onDeleteNode)="onDeleteNode($event)"
     (onAddNodeLevel)="onAddNodeLevel($event)"
