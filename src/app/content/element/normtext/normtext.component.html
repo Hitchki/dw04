@@ -1,0 +1,14 @@
+<p>
+  normtext works!
+</p>
+
+<div *ngFor="let textNode of textNodes; let i=index;" #item>
+  <span>{{project.properties.title}}</span>
+  <dw-edit
+    [editNode]="{node: textNode, index: i}"
+    (onInsertNode)="onInsertNode($event)"
+    (onDeleteNode)="onDeleteNode($event)"
+    (onAddNodeLevel)="onAddNodeLevel($event)"
+  >
+  </dw-edit>
+</div>

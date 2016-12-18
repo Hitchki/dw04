@@ -7,9 +7,6 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class NavContentComponent implements OnInit {
   @Input() projects: any;
-  @Output() onInsertNode = new EventEmitter<any>();
-  @Output() onDeleteNode = new EventEmitter<string>();
-  @Output() onAddNodeLevel = new EventEmitter<any>();
 
   constructor() { }
 
