@@ -41,10 +41,10 @@ export class UserLinkComponent implements OnInit {
     this.contentLoadService.loadProjects('franz1')
       .subscribe(
         { next: (projects) => {
-          this.projects = projects[0];
-          console.debug('this.projects', this.projects);
-          console.debug('this.projects[0]', this.projects[0])
-        }
+            this.projects = projects[0];
+            console.debug('this.projects', this.projects);
+            console.debug('this.projects[0]', this.projects[0])
+          }
         }
       );
 

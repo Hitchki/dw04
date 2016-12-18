@@ -1,5 +1,16 @@
 <div class="flex-item">
-    nav-content works!
+    <div *ngFor="let project of projects; let i=index;" #item>
+      <span>{{project.properties.title}}</span>
+      <dw-edit
+        [editNode]="{node: project, index: i}"
+        (onInsertNode)="insertNode($event)"
+        (onDeleteNode)="deleteNode($event)"
+        (onAddNodeLevel)="addNodeLevel($event)"
+      >
+      </dw-edit>
+    </div>
+    <!--<div *ngFor="let project of projects"><pre>{{project | json}}</pre></div>-->
+
 </div>
 
 
