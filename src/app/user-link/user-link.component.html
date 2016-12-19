@@ -9,19 +9,22 @@
 </a>
 
 <div>
-  <dw-content name="franz1" [projects]="projects" (onClick)="onContentClick($event)"></dw-content>
+  <dw-content name="franz1" [projects]="projects"></dw-content>
 </div>
 
+<input type="text" [(ngModel)]="userId">
+<button (click)="save(userId)">Save</button>
 
-<table>
-  <tr>  <td>"route.path"</td>         <td>{{ route.path | async | json }}</td> </tr>
-  <tr>  <td>"route.params"</td>       <td>{{ route.params | async | json }}</td> </tr>
-  <tr>  <td>"route.queryParams"</td>  <td>{{ route.queryParams | async | json }}</td> </tr>
-  <tr>  <td>"route.fragment"</td>     <td>{{ route.fragment | async | json }}</td> </tr>
-  <tr>  <td>"route.url"</td>          <td>{{ route.url | async | json }}</td> </tr>
-  <tr>  <td>"route.data"</td>         <td>{{ route.data | async | json }}</td> </tr>
-  <tr>  <td>"route.config"</td>       <td>{{ route.config | async | json }}</td> </tr>
-  <tr>  <td>"route.outlet"</td>       <td>{{ route.outlet | json }}</td> </tr>
-  <tr>  <td>"route.parent"</td>       <td>{{ route.parent }}</td> </tr>
-  <tr>  <td>"route.children"</td>     <td>{{ route.children }}</td> </tr>
-</table>
+
+<!--<table>-->
+  <!--<tr>  <td>"route.path"</td>         <td>{{ route.path | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.params"</td>       <td>{{ route.params | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.queryParams"</td>  <td>{{ route.queryParams | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.fragment"</td>     <td>{{ route.fragment | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.url"</td>          <td>{{ route.url | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.data"</td>         <td>{{ route.data | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.config"</td>       <td>{{ route.config | async | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.outlet"</td>       <td>{{ route.outlet | json }}</td> </tr>-->
+  <!--<tr>  <td>"route.parent"</td>       <td>{{ route.parent }}</td> </tr>-->
+  <!--<tr>  <td>"route.children"</td>     <td>{{ route.children }}</td> </tr>-->
+<!--</table>-->

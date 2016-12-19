@@ -43,6 +43,10 @@ import {UserLinkModule} from "./user-link/user-link.module";
     SimulationModule,
     AppRoutingModule,
   ],
+  exports: [
+    BrowserModule,
+    FormsModule,
+  ],
   providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService],
   bootstrap: [AppComponent]
 })
