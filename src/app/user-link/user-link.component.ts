@@ -51,8 +51,10 @@ export class UserLinkComponent implements OnInit {
 
           this.userDb = userDb;
           this.projects = this.userDb.projects;
-          console.debug('this loaded userDb', this.userDb);
+          // console.debug('this loaded userDb', this.userDb);
+          // console.debug('this.projects', this.userDb.projects);
           console.debug('this.projects', this.userDb.projects);
+          console.table(this.userDb.projects);
           }
       );
   }
@@ -64,7 +66,10 @@ export class UserLinkComponent implements OnInit {
   save(userId) {
     console.log(userId);
     console.log(userId);
-    this.contentLoadService.saveProjects(userId, 'abcdefgh');
+    let db = JSON.parse(JSON.stringify(this.userDb));
+    delete db['$key'];
+    console.log('db', db);
+    this.contentLoadService.saveProjects('franzii', db);
   }
 
 }
