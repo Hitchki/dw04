@@ -45,7 +45,8 @@ export class UserLinkComponent implements OnInit {
         // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
       );
 
-    this.contentLoadService.loadProjects('franz1')
+    //todo change '|| franz1'
+    this.contentLoadService.loadProjects(this.userId || 'franz1')
       .subscribe(
         userDb => {
 
@@ -65,11 +66,10 @@ export class UserLinkComponent implements OnInit {
 
   save(userId) {
     console.log(userId);
-    console.log(userId);
     let db = JSON.parse(JSON.stringify(this.userDb));
     delete db['$key'];
     console.log('db', db);
-    this.contentLoadService.saveProjects('franzii', db);
+    this.contentLoadService.saveProjects(userId, db);
   }
 
 }
