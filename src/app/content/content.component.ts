@@ -12,6 +12,9 @@ import {RoutePath} from "../shared/model/content-nodes/content-nodes";
 export class ContentComponent implements OnInit {
   @Input() name: string;
   @Input() projects: any;
+  @Input() mainContent: any;
+  @Input() infoContent: any;
+
   // @Output() onSelectNode = new EventEmitter<number>();
   // @Output() onClick = new EventEmitter<number>();
   private projectUrl: string;

@@ -15,6 +15,12 @@ export class UserLinkComponent implements OnInit {
   private fragment: string;
   private projects: any;
   private queryParams: any;
+  private playGroundParam1 = 'franz1/projects/0/';
+  private nodesByUrl = 'vwl/projects/0/subprojects';
+  private nodeByUrl = 'vwl/projects/0/';
+
+  private mainContent: any;
+  private infoContent: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,14 +30,12 @@ export class UserLinkComponent implements OnInit {
   { }
 
   ngOnInit() {
-    this.route.queryParams
-      .subscribe(
-        // (xx) => this.userId = xx;
-        queryParams => {
-          this.queryParams = queryParams;
-          // console.debug('this.queryParams', this.queryParams) ;
-        }
-      );
+    // this.route.queryParams
+    //   .subscribe(
+    //     queryParams => {
+    //       this.queryParams = queryParams;
+    //     }
+    //   );
 
     this.route.fragment
       // .do(console.log.bind(this, 'fragment'))
@@ -41,12 +45,17 @@ export class UserLinkComponent implements OnInit {
           console.debug('this.fragment', this.fragment);
           this.userId = this.getUserId();
           console.debug('this.userId', this.userId);
-        }
-        // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
+
+          this.loadProject();
+
+        }// (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
       );
 
+  }
+
+  loadProject(){
     //todo change '|| franz1'
-    this.contentLoadService.loadProjects(this.userId || 'franz1')
+    this.contentLoadService.loadProjects(this.userId || 'vwl')
       .subscribe(
         userDb => {
 
@@ -54,10 +63,32 @@ export class UserLinkComponent implements OnInit {
           this.projects = this.userDb.projects;
           // console.debug('this loaded userDb', this.userDb);
           // console.debug('this.projects', this.userDb.projects);
-          console.debug('this.projects', this.userDb.projects);
-          console.table(this.userDb.projects);
-          }
+          // console.debug('this.projects', this.userDb.projects);
+          // console.table(this.userDb.projects);
+        }
       );
+
+    this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
+      contentNodes => {
+        this.mainContent = contentNodes;
+        console.debug('this.mainContent', this.mainContent);
+      }
+    );
+
+    this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
+      contentNodes => {
+        this.infoContent = contentNodes;
+        console.debug('this.infoContent', this.infoContent);
+      }
+    );
+  }
+
+  loadNodesByUrl(nodesUrl) {
+    return this.contentLoadService.loadNodesByUrl(nodesUrl);
+  }
+
+  loadNodeByUrl(nodeUrl) {
+    return this.contentLoadService.loadNodeByUrl(nodeUrl);
   }
 
   getUserId() {
@@ -72,4 +103,30 @@ export class UserLinkComponent implements OnInit {
     this.contentLoadService.saveProjects(userId, db);
   }
 
+
+  testLoadNodeByUrl() {
+    this.loadNodeByUrl(this.nodeByUrl).subscribe(
+      (node) => console.log(node),
+      (err) => console.log('error happened')
+    );
+  }
+
+  testLoadNodesByUrl() {
+    this.loadNodesByUrl(this.nodesByUrl).subscribe(
+      (node) => console.log(node),
+      (err) => console.log('error happened')
+    );
+  }
+
+  playGround1() {
+    this.loadNodeByUrl(this.playGroundParam1).subscribe(
+      (node) => console.log(node),
+      (err) => console.log('error happened')
+    );
+
+    // this.loadNodesByUrl(this.playGroundParam1).subscribe(
+    //   (nodes) => console.log(nodes),
+    //   (err) => console.log('error happened')
+    // );
+  }
 }

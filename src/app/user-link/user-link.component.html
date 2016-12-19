@@ -9,11 +9,21 @@
 </a>
 
 <div>
-  <dw-content name="franz1" [projects]="projects"></dw-content>
+  <dw-content name="franz1" [projects]="projects" [mainContent]="mainContent" [infoContent]="infoContent"></dw-content>
 </div>
 
 <input type="text" [(ngModel)]="userId">
 <button (click)="save(userId)">Save</button>
+
+<div>
+  <input type="text" [(ngModel)]="nodeByUrl">
+  <button (click)="testLoadNodeByUrl()">testLoadNodeByUrl</button>
+  <input type="text" [(ngModel)]="nodesByUrl">
+  <button (click)="testLoadNodesByUrl()">testLoadNodesByUrl</button>
+</div>
+
+<input type="text" [(ngModel)]="playGroundParam1">
+<button (click)="playGround1()">playGround1</button>
 
 <!--projects: {{projects | json}}-->
 

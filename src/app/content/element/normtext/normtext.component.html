@@ -3,7 +3,7 @@
 <!--</p>-->
 <!--<pre>{{dwNodes | json}}</pre>-->
 <div *ngFor="let dwNode of dwNodes; let i=index;" #item>
-  <span>{{dwNode.properties.title}}</span>
+  <span>{{dwNode | json}}</span>
   <dw-edit
     [editNode]="{node: dwNode, index: i}"
     (onInsertNode)="onInsertNode($event)"

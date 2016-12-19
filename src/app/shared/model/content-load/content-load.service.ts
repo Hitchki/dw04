@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {ConfigService} from "../../config/config.service";
 import {FirebaseService} from "../../firebase/firebase.service";
 import {MockdataService} from "../../mockdata/mockdata.service";
+import {switchMap} from "rxjs/operator/switchMap";
 
 @Injectable()
 export class ContentLoadService {
@@ -28,5 +29,16 @@ export class ContentLoadService {
 
   saveProjects(userId: string, data: any):any {
     return this.firebaseService.saveProjects(userId, data);
+  }
+
+  loadNodeByUrl(objectUrl: string):Observable<any> {
+    return this.firebaseService.loadObjectByUrl(objectUrl);
+    // return this.firebaseService.loadObjectByUrl(objectUrl);
+    // return this.firebaseService.loadObjectByUrl(objectUrl)
+    //   .map(nodes => delete nodes['$key']);
+  }
+
+  loadNodesByUrl(listUrl: string):Observable<any> {
+    return this.firebaseService.loadListByUrl(listUrl);
   }
 }

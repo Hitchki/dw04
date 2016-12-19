@@ -10,6 +10,14 @@ export class FirebaseService {
   ) {
   }
 
+  loadObjectByUrl(objectUrl: string):Observable<any> {
+    return this.db.object(objectUrl);
+  }
+
+  loadListByUrl(listUrl: string):Observable<any> {
+    return this.db.list(listUrl);
+  }
+
   loadProjects(userId: string):Observable<any> {
     // return this.db.list(userId);
     return this.db.object(userId);

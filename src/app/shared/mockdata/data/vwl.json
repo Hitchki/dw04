@@ -1,0 +1,148 @@
+{
+  "vwl": {
+    "projects": [
+      {
+        "properties": {
+          "title": "Wirtschaftsfragen",
+          "description": "Offene Fragen zum Thema 'Wirtschaft'"
+        },
+        "subprojects": [
+          {
+            "properties": {
+              "title": "Überblick",
+              "description": "Ein erstes Ziela-Abstecken"
+            },
+            "normtext": [
+              {
+                "normtext": [
+                  {
+                    "text": "Ich würde gerne einen Text zum Thema 'Wirtschaft' erstellen.Deshalb gibt es im Folgenden"
+                  }
+                ]
+              },
+              {
+                "normtext": [
+                  {
+                    "text": "Überblick"
+                  },
+                  {
+                    "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+                  },
+                  {
+                    "text": "=> unsere derzeitigen Wirtschaftsdogmen/grundsätze/leitkonzepte haben ein (baldiges) Ablaufdatum."
+                  },
+                  {
+                    "text": "Begründung: Es gibt kein ewiges (materielles) Wachsteum."
+                  },
+                  {
+                    "text": "Welche der beiden Begründungen vorher schlagend wird:"
+                  },
+                  {
+                    "text": "Abfälle/Sink: Mikroplastik im Meer, Klimawandel etc."
+                  },
+                  {
+                    "text": "Rohstoffknappheit/Source: Öl, Rohstoffe"
+                  },
+                  {
+                    "text": "Selbst in sich geschlossene Kreisläufe können nicht ewig wachsen."
+                  },
+                  {
+                    "text": "Exkurs; Wie wird Wirtschaftswachstum gemessen(=Wissen)."
+                  }
+                ]
+              },
+              {
+                "searchtree": {
+                }
+              }
+            ]
+          },
+          {
+            "subprojects": {
+              "properties": {
+                "abc": "xyz"
+              },
+              "normtext": [
+                {
+                  "text": "Flassbecks Thesen"
+                },
+                {
+                  "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+                },
+                {
+                  "text": "=> unsere derzeitigen Wirtschaftsdogmen/grundsätze/leitkonzepte haben ein (baldiges) Ablaufdatum."
+                },
+                {
+                  "text": "Begründung: Es gibt kein ewiges (materielles) Wachsteum."
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "properties": {
+          "title": "Erklärung",
+          "description": "Offene Fragen zum Thema 'Wirtschaft'"
+        },
+        "subprojects": [
+          {
+            "properties": {
+              "abc": "xyz"
+            },
+            "normtext": [
+              {
+                "text": "Überblick"
+              },
+              {
+                "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+              },
+              {
+                "text": "=> unsere derzeitigen Wirtschaftsdogmen/grundsätze/leitkonzepte haben ein (baldiges) Ablaufdatum."
+              },
+              {
+                "text": "Begründung: Es gibt kein ewiges (materielles) Wachsteum."
+              },
+              {
+                "text": "Welche der beiden Begründungen vorher schlagend wird:"
+              },
+              {
+                "text": "Abfälle/Sink: Mikroplastik im Meer, Klimawandel etc."
+              },
+              {
+                "text": "Rohstoffknappheit/Source: Öl, Rohstoffe"
+              },
+              {
+                "text": "Selbst in sich geschlossene Kreisläufe können nicht ewig wachsen."
+              },
+              {
+                "text": "Exkurs; Wie wird Wirtschaftswachstum gemessen(=Wissen)."
+              }
+            ]
+          },
+          {
+            "subprojects": {
+              "properties": {
+                "abc": "xyz"
+              },
+              "normtext": [
+                {
+                  "text": "Flassbecks Thesen"
+                },
+                {
+                  "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+                },
+                {
+                  "text": "=> unsere derzeitigen Wirtschaftsdogmen/grundsätze/leitkonzepte haben ein (baldiges) Ablaufdatum."
+                },
+                {
+                  "text": "Begründung: Es gibt kein ewiges (materielles) Wachsteum."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
