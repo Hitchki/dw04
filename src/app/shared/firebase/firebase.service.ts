@@ -11,7 +11,8 @@ export class FirebaseService {
   }
 
   loadProjects(userId: string):Observable<any> {
-    return this.db.list(userId);
+    // return this.db.list(userId);
+    return this.db.object(userId);
     // return Observable.from(['observable in firebase-load-service from User: ' + userId]);
   }
 

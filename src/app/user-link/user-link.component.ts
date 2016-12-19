@@ -11,6 +11,7 @@ import {ContentPathService} from "../shared/model/content-path/content-path.serv
 export class UserLinkComponent implements OnInit {
 
   private userId: string;
+  private userDb: any;
   private fragment: string;
   private projects: any;
   private queryParams: any;
@@ -46,12 +47,12 @@ export class UserLinkComponent implements OnInit {
 
     this.contentLoadService.loadProjects('franz1')
       .subscribe(
-        projects => {
+        userDb => {
 
-          this.projects = projects
-          console.debug('this loaded projects', this.projects);
-          this.projects = projects[0];
-          console.debug('this.projects[0]', this.projects);
+          this.userDb = userDb;
+          this.projects = this.userDb.projects;
+          console.debug('this loaded userDb', this.userDb);
+          console.debug('this.projects', this.userDb.projects);
           }
       );
   }
