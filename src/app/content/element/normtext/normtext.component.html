@@ -2,7 +2,7 @@
   <span>{{dwNodes?.properties?.title}}</span>
   <span>{{dwNode | json}}</span>
   <dw-edit
-    [editNode]="{node: dwNode, index: i}"
+    [editNode]="{dwNode: dwNode, index: i, dwNodes: dwNodes}"
     (onInsertNode)="onInsertNode($event)"
     (onDeleteNode)="onDeleteNode($event)"
     (onAddNodeLevel)="onAddNodeLevel($event)"
@@ -11,6 +11,7 @@
 </div>
 
 <dw-edit
+  [editNode]="{dwNode: undefined, index: dwNodes?.length, dwNodes: dwNodes}"
   (onInsertNode)="onInsertNode($event)"
   (onDeleteNode)="onDeleteNode($event)"
   (onAddNodeLevel)="onAddNodeLevel($event)"

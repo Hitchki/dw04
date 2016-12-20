@@ -1,3 +1,7 @@
 <i class="fa fa-plus-circle" aria-hidden="true" (click)="insertNode()"></i>
-<i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteNode()"></i>
-<i class="fa fa-plus-square" aria-hidden="true" (click)="addNodeLevel()"></i>
+<!-- -{{editNode?.index}}-{{editNode?.dwNodes?.length}}-{{editNode?.index === editNode?.dwNodes?.length}}- -->
+<span *ngIf="editNode?.index < editNode?.dwNodes?.length">
+  <i class="fa fa-minus-circle" aria-hidden="true" (click)="deleteNode()"></i>
+  <i class="fa fa-plus-square" aria-hidden="true" (click)="addNodeLevel()"></i>
+</span>
+
