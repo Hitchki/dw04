@@ -3,19 +3,17 @@ export class EditElement {
   }
 
   onInsertNode(editNode) {
-    alert('onInsertNode');
-    let nodes = [];
-    let index: number = 0;
-    let newNode: any = {};
-    nodes.splice(index, 0, newNode);
+    console.log('onInsertNode', editNode);
+    let newNode = prompt('insert new node');
+    editNode.nodes.splice(editNode.index, 0, newNode);
   }
 
-  onDeleteNode() {
+  onDeleteNode(editNode) {
     alert('onDeleteNode');
-    let nodes = [];
-    let index: number = 0;
+    // let nodes = [];
+    // let index: number = 0;
     let countDelete: number = 1;
-    nodes.splice(index, countDelete);
+    editNode.nodes.splice(editNode.index, countDelete);
   }
 
   onAddNodeLevel() {
