@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContentLoadService} from "../shared/model/content-load/content-load.service";
 import {ContentPathService} from "../shared/model/content-path/content-path.service";
+import {CanComponentDeactivate} from "../shared/service/can-deactivate-guard.service";
 
 @Component({
   selector: 'app-user-link',
   templateUrl: './user-link.component.html',
   styleUrls: ['./user-link.component.css'],
 })
-export class UserLinkComponent implements OnInit {
+export class UserLinkComponent implements OnInit, CanComponentDeactivate {
 
   private userId: string;
   private userDb: any;
@@ -77,8 +78,8 @@ export class UserLinkComponent implements OnInit {
 
     this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
       contentNodes => {
-        this.infoContent = contentNodes;
-        console.debug('this.infoContent', this.infoContent);
+        // this.infoContent = contentNodes;
+        // console.debug('this.infoContent', this.infoContent);
       }
     );
   }
@@ -129,4 +130,14 @@ export class UserLinkComponent implements OnInit {
     //   (err) => console.log('error happened')
     // );
   }
+
+  public canDeactivate() {
+    alert('canDeactivate');
+    return true;
+  }
+
+  allowLeave() {
+    return false;
+  }
+
 }

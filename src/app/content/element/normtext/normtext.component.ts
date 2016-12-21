@@ -16,4 +16,9 @@ export class NormtextComponent extends EditElement implements OnInit {
   ngOnInit() {
   }
 
+  onInsertNode(editNode) {
+    console.log('onInsertNode-normtext!!', editNode);
+    super.onInsertNode(editNode);
+  }
+
 }

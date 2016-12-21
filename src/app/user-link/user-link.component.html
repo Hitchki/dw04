@@ -2,11 +2,16 @@
   user-link works!
 </p>
 
+
 <a routerLink="/user-link/user-franz-projects-1-subprojects-1">biglink</a>
 
 <a [routerLink]="['/user-link']" [queryParams]="{url: 'projects/1/subprojects/7', projects:1, subprojects:2}" fragment="projects/1/subprojects/7">
   link to user component
 </a>
+
+<a routerLink="/simulation">simulation</a>
+
+<a href="http://orf.at/">http://orf.at/</a>
 
 <div>
   <dw-content name="franz1" [projects]="projects" [mainContent]="mainContent" [infoContent]="infoContent"></dw-content>
