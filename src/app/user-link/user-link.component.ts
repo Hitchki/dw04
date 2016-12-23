@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ContentLoadService} from "../shared/model/content-load/content-load.service";
 import {ContentPathService} from "../shared/model/content-path/content-path.service";
 import {CanComponentDeactivate} from "../shared/service/can-deactivate-guard.service";
+import {CentralService} from "../shared/service/central.service";
 
 @Component({
   selector: 'app-user-link',
@@ -27,7 +28,8 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
     private route: ActivatedRoute,
     private router: Router,
     private contentLoadService: ContentLoadService,
-    private contentPathService: ContentPathService)
+    private contentPathService: ContentPathService,
+    private centralService: CentralService)
   { }
 
   ngOnInit() {
@@ -37,15 +39,16 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
     //       this.queryParams = queryParams;
     //     }
     //   );
+    this.testTest();
 
     this.route.fragment
       // .do(console.log.bind(this, 'fragment'))
       .subscribe(
         fragment => {
           this.fragment = fragment;
-          console.debug('this.fragment', this.fragment);
+          // console.debug('this.fragment', this.fragment);
           this.userId = this.getUserId();
-          console.debug('this.userId', this.userId);
+          // console.debug('this.userId', this.userId);
 
           this.loadProject();
 
@@ -72,7 +75,7 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
     this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
       contentNodes => {
         this.mainContent = contentNodes;
-        console.debug('this.mainContent', this.mainContent);
+        // console.debug('this.mainContent', this.mainContent);
       }
     );
 
@@ -138,6 +141,10 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
 
   allowLeave() {
     return false;
+  }
+
+  testTest(){
+    this.centralService.testTest();
   }
 
 }

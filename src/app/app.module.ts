@@ -24,6 +24,7 @@ import {PlaygroundRoutingModule} from "./playground/playground-routing.module";
 import {UserModule} from "./user/user.module";
 import {UserLinkComponent} from "./user-link/user-link.component";
 import {UserLinkModule} from "./user-link/user-link.module";
+import {CentralService} from "./shared/service/central.service";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import {UserLinkModule} from "./user-link/user-link.module";
     BrowserModule,
     FormsModule,
   ],
-  providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService],
+  providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService, CentralService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@ export class MockdataService {
     private configService: ConfigService,
     private http: Http,
   ) {
-    console.log(this.configService);
+    // console.log(this.configService);
   }
 
   loadProjects(mockDataUrl: string):Observable<any> {
