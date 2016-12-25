@@ -28,7 +28,7 @@ const playgroundRoutes: Routes =
         component: Play2Component
       },
       {
-        path: 'play2',
+        path: 'play3',
         component: Play3Component
       },
       {
