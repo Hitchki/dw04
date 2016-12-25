@@ -86,30 +86,31 @@ export class CentralService {
   }
 
   buildPathNodes(fragment:string) {
-    // let partialFragments = fragment.split('/');
+    let normalizedFragment = fragment.replace(/\/\//g, '/');
+    let fragmentsArray = normalizedFragment.split('/');
+    let nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
+    let nodesInds = fragmentsArray.filter((ele, ind) => ind%2 );
 
-    let partialFragments = fragment.match(/[^/]+,[^/]+/g);
-
-    // var text='string1, string2, string3, string4, string5, string 6';
-    // result=text.match(/[^,]+,[^,]+/g);
-
-    // let xx = this.getPathNodes(partialFragments, projects);
+    let dwNodes=[];
+    let pathNodes = this.getPathNodes(dwNodes, nodesCons, nodesInds);
   }
 
-  getPathNodes(pf, dwNodes) {
-    var pfi = pfi ? pfi + 1 : 0;   //pfi...partialFragmentIndex
+  getPathNodes(dwNodes, nodesCons, nodesInds) {
+    // 'use strict';
+    var pi = pi ? pi + 1 : 0;   //pi...pathIndex
     var pathNodes = pathNodes ? pathNodes : [];
-    // if (!dwNodes || !path || !path[pfi] || !dwNodes[path[pfi]]) {
-    if (!dwNodes || !pf || !pf[pfi]) {
-      console.log('nix params');
+    // var partialFragment = pf[pi].partialRoute;
+
+    if (pi === nodesCons.length) {
+      // pathNodes.push(getSinglePathNode());
       return pathNodes;
     } else {
-      let selectedNodeIndex = pf[pfi].selectedIndex;
-      let partialRoute = pf[pfi].partialRoute;
-      let contentNode: any = dwNodes[selectedNodeIndex];
-      let nextLevelContentNodes = contentNode[selectedNodeIndex][partialRoute];
-      pathNodes.push(this.getSinglePathNode(contentNode, partialRoute, selectedNodeIndex));
-      this.getPathNodes(pf, nextLevelContentNodes);
+      let selectedNodeIndex = nodesInds[pi];
+      let selectedNode = dwNodes[selectedNodeIndex];
+      let conNode = nodesCons[pi];
+      dwNodes = dwNodes[conNode];
+
+      this.getPathNodes(dwNodes, nodesCons, nodesInds);
     }
   }
 
