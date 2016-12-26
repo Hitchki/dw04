@@ -16,6 +16,9 @@ interface PathNode {
   selectedNode: any;
 }
 
+type FragmentsHelpers = {nodesCons: string[], nodesInds: number[], };
+
+
 @Injectable()
 export class CentralService {
 
@@ -25,8 +28,60 @@ export class CentralService {
 
   constructor(
     private contentLoadService: ContentLoadService
-  ) {
+  ) {}
+
+  getNormalizedFragment(fragment:string){
+    return fragment.replace(/\/\//g, '/');
   }
+
+  getFragmentsArray(normalizedFragment:string){
+    return normalizedFragment.split('/');
+  }
+
+  getNodesArrays(fragmentsArray: any[]) {
+    let fragmentsHelpers: FragmentsHelpers;
+    fragmentsHelpers.nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
+    fragmentsHelpers.nodesInds = fragmentsArray.filter((ele, ind) => ind%2).map(index=>+index);
+    return fragmentsHelpers;
+  }
+
+
+  buildPathNodes(fragment:string) {
+    let normalizedFragment = this.getNormalizedFragment(fragment);
+    let fragmentsArray = this.getFragmentsArray(normalizedFragment);
+    // let nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
+    // let nodesInds = fragmentsArray.filter((ele, ind) => ind%2 );
+
+    let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
+
+    let dwNodes=[];
+    let pathNodes = this.getPathNodes(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
+  }
+
+  getPathNodes(dwNodes, nodesCons, nodesInds) {
+    // 'use strict';
+    var pi = pi ? pi + 1 : 0;   //pi...pathIndex
+    var pathNodes = pathNodes ? pathNodes : [];
+    // var partialFragment = pf[pi].partialRoute;
+
+    if (pi === nodesCons.length) {
+      // pathNodes.push(getSinglePathNode());
+      return pathNodes;
+    } else {
+      let selectedNodeIndex = nodesInds[pi];
+      let selectedNode = dwNodes[selectedNodeIndex];
+      let conNode = nodesCons[pi];
+      dwNodes = dwNodes[conNode];
+
+      this.getPathNodes(dwNodes, nodesCons, nodesInds);
+    }
+  }
+
+  getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex) {
+    var pathItem = {type: partialRoute, dwNodes: dwNodes, selectedIndex: selectedNodeIndex};
+    return pathItem;
+  }
+
 
   //fragment is without userId
   getPathNodesFromFragment(fragment)  {
@@ -34,11 +89,11 @@ export class CentralService {
     this.pathNodes = partialFragments.map((partFrag, i, partFrags) => {
       let partialFragment = (i===0) ? partFrag : `${partFrag}/${partialFragments[i-1]}`;
       return {partialFragment: partialFragment,
-              userFragment: `${this.userId}/${partialFragment}`,
+        userFragment: `${this.userId}/${partialFragment}`,
       };
     });
 
-   let pathTmps = this.pathNodes.map(
+    let pathTmps = this.pathNodes.map(
       pathNode => this.contentLoadService.loadNodeByUrl(pathNode.userFragment)
     );
 
@@ -83,39 +138,5 @@ export class CentralService {
     //     (err) => console.error('err', err),
     //     () => console.debug('end')
     // );
-  }
-
-  buildPathNodes(fragment:string) {
-    let normalizedFragment = fragment.replace(/\/\//g, '/');
-    let fragmentsArray = normalizedFragment.split('/');
-    let nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
-    let nodesInds = fragmentsArray.filter((ele, ind) => ind%2 );
-
-    let dwNodes=[];
-    let pathNodes = this.getPathNodes(dwNodes, nodesCons, nodesInds);
-  }
-
-  getPathNodes(dwNodes, nodesCons, nodesInds) {
-    // 'use strict';
-    var pi = pi ? pi + 1 : 0;   //pi...pathIndex
-    var pathNodes = pathNodes ? pathNodes : [];
-    // var partialFragment = pf[pi].partialRoute;
-
-    if (pi === nodesCons.length) {
-      // pathNodes.push(getSinglePathNode());
-      return pathNodes;
-    } else {
-      let selectedNodeIndex = nodesInds[pi];
-      let selectedNode = dwNodes[selectedNodeIndex];
-      let conNode = nodesCons[pi];
-      dwNodes = dwNodes[conNode];
-
-      this.getPathNodes(dwNodes, nodesCons, nodesInds);
-    }
-  }
-
-  getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex) {
-    var pathItem = {type: partialRoute, dwNodes: dwNodes, selectedIndex: selectedNodeIndex};
-    return pathItem;
   }
 }
