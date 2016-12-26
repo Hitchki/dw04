@@ -1,23 +1,7 @@
+import {PathNodes, FragmentsHelpers} from "./central.service.interface"
 import { Injectable } from '@angular/core';
 import {ContentLoadService} from "../model/content-load/content-load.service";
 import {Observable} from "rxjs";
-
-// e.g. userFragment: franz/projects/0/subprojects/0
-// e.g. projectsFragment: projects/0/subprojects/0
-type PathNodes = PathNode[];
-interface PathNode {
-  projectsFragment: string;
-  userFragment: string;
-  editFragment: string;
-  firebaseFragment: string;
-  partialFragment: string;
-  type: string;
-  nodes: any[];
-  selectedNode: any;
-}
-
-type FragmentsHelpers = {nodesCons: string[], nodesInds: number[], };
-
 
 @Injectable()
 export class CentralService {
@@ -31,7 +15,8 @@ export class CentralService {
   ) {}
 
   getNormalizedFragment(fragment:string){
-    return fragment.replace(/\/\//g, '/');
+    let normFragment = fragment.replace(/\/\/+/g, '/');
+    return normFragment.replace(/\/$/g, '');
   }
 
   getFragmentsArray(normalizedFragment:string){

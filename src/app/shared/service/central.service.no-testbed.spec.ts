@@ -7,23 +7,29 @@ import {MockdataService} from "../mockdata/mockdata.service";
 import {Http} from "@angular/http";
 import {AngularFire, AngularFireDatabase} from "angularfire2";
 
-describe('this is a test', () =>{
+// class ContentLoadService {
+//   public config: any;
+//   private configService: any;
+// }
+
+// export class FakeFancyService extends FancyService {
+//   value: string = 'faked value';
+// }
+
+xdescribe('this is a test', () =>{
 
   let centralService;
   // let contentLoadService: ContentLoadService = new ContentLoadService();
 
   beforeEach( () => {
-    centralService = new CentralService(new ContentLoadService(
-      new ConfigService(),
-      new FirebaseService(),
-      new MockdataService(new ConfigService(), new Http()),
-    ));
+    const fake =  { getValue: () => 'fake value' };
+    // centralService = new CentralService(fake as ContentLoadService);
   });
 
   describe('loadTestTree', ()=>{
 
 
-    xit('', function () {
+    it('', function () {
       expect(true).toBeTruthy();
     });
   });
