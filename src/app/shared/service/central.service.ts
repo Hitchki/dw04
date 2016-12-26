@@ -24,7 +24,7 @@ export class CentralService {
   }
 
   getNodesArrays(fragmentsArray: any[]) {
-    let fragmentsHelpers: FragmentsHelpers;
+    let fragmentsHelpers: FragmentsHelpers = <FragmentsHelpers>{};
     fragmentsHelpers.nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
     fragmentsHelpers.nodesInds = fragmentsArray.filter((ele, ind) => ind%2).map(index=>+index);
     return fragmentsHelpers;
@@ -34,8 +34,6 @@ export class CentralService {
   buildPathNodes(fragment:string) {
     let normalizedFragment = this.getNormalizedFragment(fragment);
     let fragmentsArray = this.getFragmentsArray(normalizedFragment);
-    // let nodesCons = fragmentsArray.filter((ele, ind) => !(ind%2));
-    // let nodesInds = fragmentsArray.filter((ele, ind) => ind%2 );
 
     let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
 

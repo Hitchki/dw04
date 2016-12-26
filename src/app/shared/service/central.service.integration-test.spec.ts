@@ -30,29 +30,6 @@ describe('CentralService', () => {
     expect(service).toBeTruthy();
   }));
 
-  xdescribe('getNormalizedFragment', ()=> {
-    it('should not change correct fragments', inject([CentralService], (service: CentralService) => {
-      let fragment = 'franz/ulrich';
-      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
-    }));
-
-    it('should replace duplicate // with one /', inject([CentralService], (service: CentralService) => {
-      let fragment = 'franz//ulrich';
-      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
-    }));
-
-    it('should replace duplicate // with one /', inject([CentralService], (service: CentralService) => {
-      let fragment = 'franz///ulrich';
-      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
-    }));
-
-    it('should remove duplicates /// and / at the end', inject([CentralService], (service: CentralService) => {
-      let fragment = 'franz///ulrich/';
-      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
-    }));
-  });
-
-
   xdescribe('getNodesArrays', ()=> {
     it('should give back correct fragmentsArray - even case', inject([CentralService], (service: CentralService) => {
       let fragmentsArray = ['projects','7','subprojects','2'];
@@ -83,12 +60,4 @@ describe('CentralService', () => {
     }));
   });
 
-  describe('getPathNodes', ()=> {
-    it('should give back correct fragmentsArray - even case', inject([CentralService], (service: CentralService) => {
-      let fragmentsArray = ['projects','7','subprojects','2'];
-      let result: FragmentsHelpers = {nodesCons: ['projects','subprojects' ],nodesInds:[7,2]};
-      expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
-    }));
-
-  });
 });
