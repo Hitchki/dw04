@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import {ContentLoadService} from "../model/content-load/content-load.service";
 import {Observable} from "rxjs";
 
+
+
 @Injectable()
 export class CentralService {
 
@@ -41,7 +43,7 @@ export class CentralService {
     let pathNodes = this.getPathNodes(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
   }
 
-  getPathNodes(dwNodes, nodesCons, nodesInds) {
+  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[]) {
     // 'use strict';
     var pi = pi ? pi + 1 : 0;   //pi...pathIndex
     var pathNodes = pathNodes ? pathNodes : [];

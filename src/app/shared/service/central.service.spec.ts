@@ -8,6 +8,7 @@ import {FirebaseService} from "../firebase/firebase.service";
 import {MockdataService} from "../mockdata/mockdata.service";
 import {AngularFire, AngularFireDatabase} from "angularfire2";
 import {FragmentsHelpers} from "./central.service.interface";
+import {test1} from "../mockdata/testdata/test1";
 
 class ContentLoadServiceStub {
   public config: any;
@@ -84,10 +85,15 @@ describe('CentralService', () => {
   });
 
   describe('getPathNodes', ()=> {
+    let nodesCons: string[];
+    let nodesInds: number[];
+    let dwNodes: any;
     it('should give back correct fragmentsArray - even case', inject([CentralService], (service: CentralService) => {
-      let fragmentsArray = ['projects','7','subprojects','2'];
-      let result: FragmentsHelpers = {nodesCons: ['projects','subprojects' ],nodesInds:[7,2]};
-      expect(service.getNodesArrays(fragmentsArray)).toEqual(jasmine.objectContaining(result));
+      nodesCons = ['projects','subprojects'];
+      nodesInds = [0,0];
+      dwNodes = test1;
+      let result = null;
+      expect(service.getPathNodes(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
     }));
 
   });
