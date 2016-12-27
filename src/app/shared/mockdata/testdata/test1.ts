@@ -1,8 +1,9 @@
 export var test1 =
 {
-  "projects": [
-    {
-      "subprojects": [
+  "projects":
+   [{
+      "subprojects":
+      [
         {
           "normtext": [
             {
@@ -15,7 +16,8 @@ export var test1 =
         },
         {
           "subprojects": {
-            "normtext": [
+            "normtext":
+            [
               {
                 "text": "Flassbecks Thesen"
               },
@@ -26,6 +28,5 @@ export var test1 =
           }
         }
       ]
-    }
-  ]
+    }]
 };

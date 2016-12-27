@@ -1,4 +1,4 @@
-import {PathNodes, FragmentsHelpers} from "./central.service.interface"
+import {PathNodes, FragmentsHelpers, PathNode} from "./central.service.interface"
 import { Injectable } from '@angular/core';
 import {ContentLoadService} from "../model/content-load/content-load.service";
 import {Observable} from "rxjs";
@@ -33,37 +33,42 @@ export class CentralService {
   }
 
 
-  buildPathNodes(fragment:string) {
+  buildPathNodes(fragment:string, pathNodes?: any[]) {
     let normalizedFragment = this.getNormalizedFragment(fragment);
     let fragmentsArray = this.getFragmentsArray(normalizedFragment);
 
     let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
 
     let dwNodes=[];
-    let pathNodes = this.getPathNodes(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
+    pathNodes = this.getPathNodes(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
+    return pathNodes;
   }
 
-  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[]) {
+  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes) {
     // 'use strict';
-    var pi = pi ? pi + 1 : 0;   //pi...pathIndex
-    var pathNodes = pathNodes ? pathNodes : [];
+    var pi = pi ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
+    pathNodes = pathNodes ? pathNodes : <PathNodes>[];
     // var partialFragment = pf[pi].partialRoute;
 
     if (pi === nodesCons.length) {
       // pathNodes.push(getSinglePathNode());
       return pathNodes;
     } else {
+      let partialRoute = nodesCons[pi];
       let selectedNodeIndex = nodesInds[pi];
       let selectedNode = dwNodes[selectedNodeIndex];
-      let conNode = nodesCons[pi];
-      dwNodes = dwNodes[conNode];
 
-      this.getPathNodes(dwNodes, nodesCons, nodesInds);
+      pathNodes.push();
+      let newPathNode: PathNode = this.getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex);
+
+      let conNodeProp = nodesCons[pi+1];
+      let newDwNodes = dwNodes[conNodeProp];
+      this.getPathNodes(newDwNodes, nodesCons, nodesInds,pathNodes);
     }
   }
 
-  getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex) {
-    var pathItem = {type: partialRoute, dwNodes: dwNodes, selectedIndex: selectedNodeIndex};
+  getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex):PathNode {
+    var pathItem = {type: partialRoute, dwNodes: dwNodes, selectedIndex: selectedNodeIndex, partialRoute: partialRoute};
     return pathItem;
   }
 
