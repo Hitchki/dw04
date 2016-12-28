@@ -44,9 +44,9 @@ export class CentralService {
     return pathNodes;
   }
 
-  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes) {
+  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes, pi?: number) {
     // 'use strict';
-    var pi = pi ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
+    var pi = (pi !== undefined) ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
     pathNodes = pathNodes ? pathNodes : <PathNodes>[];
     // var partialFragment = pf[pi].partialRoute;
 
@@ -58,12 +58,12 @@ export class CentralService {
       let selectedNodeIndex = nodesInds[pi];
       let selectedNode = dwNodes[selectedNodeIndex];
 
-      pathNodes.push();
       let newPathNode: PathNode = this.getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex);
+      pathNodes.push(newPathNode);
 
       let conNodeProp = nodesCons[pi+1];
-      let newDwNodes = dwNodes[conNodeProp];
-      this.getPathNodes(newDwNodes, nodesCons, nodesInds,pathNodes);
+      let newDwNodes = selectedNode[conNodeProp];
+      this.getPathNodes(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
     }
   }
 

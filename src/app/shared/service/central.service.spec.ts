@@ -90,10 +90,10 @@ describe('CentralService', () => {
     let dwNodes: any = test1.projects;
     it('should give back subprojects - pathNodes undefined', inject([CentralService], (service: CentralService) => {
       nodesCons = ['projects', 'subprojects'];
-      nodesInds = [0,0];
+      nodesInds = [0,1];
       dwNodes = test1.projects;
-      let result = null;
-      // expect(service.getPathNodes(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
+      let result = {};
+      expect(service.getPathNodes(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
     }));
 
     xit('should give back subprojects - pathNodes defined', inject([CentralService], (service: CentralService) => {
