@@ -7,15 +7,7 @@ const userRoutes: Routes =
 [
   { path: 'user/:0', component: UserComponent },
   { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
-  { path: 'user/:0/:1', component: UserComponent },
+  { path: 'user/:0/:1/:2', component: UserComponent },
 ];
 
 @NgModule({

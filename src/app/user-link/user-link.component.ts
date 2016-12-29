@@ -96,6 +96,7 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
   }
 
   getUserId() {
+    //userId is part of fragment
     return this.fragment ? this.fragment.split('/')[0] : undefined;
   }
 

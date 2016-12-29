@@ -10,7 +10,8 @@ const userLinkRoutes: Routes =
   // { path: 'user-link', component: UserLinkComponent },
   { path: 'user-link', component: UserLinkComponent, canDeactivate:[CanDeactivateGuard] },
 
-  { path: 'user-link/:userId' , component: UserLinkComponent },
+  // { path: 'user-link/:userId' , component: UserLinkComponent },
+
   // { path: 'user-link/:0', component: UserLinkComponent },
   // { path: 'user-link/:0/:1', component: UserLinkComponent },
   // { path: 'user-link/:0/:1/:2', component: UserLinkComponent },
