@@ -48,7 +48,7 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
     // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/data/vwl-diskussion.json')
     // this.contentLoadService.loadProjects(this.userId || 'vwl')
 
-
+    //Todo .json() falls mockdata
     // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/testdata/test1.json')
     this.contentLoadService.loadProjects(this.userId)
       .subscribe(
