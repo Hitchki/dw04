@@ -31,6 +31,10 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  ////////////////////////////////////////////
+
+
   // click($event) {
   //   console.log($event);
   //   $event.target.innerHTML += " ...ich wurde geklickt!!"

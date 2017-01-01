@@ -84,7 +84,7 @@ describe('CentralService', () => {
     }));
   });
 
-  describe('getPathNodes test1', ()=> {
+  describe('getPathNodesFRA test1', ()=> {
     let nodesCons: string[];
     let nodesInds: number[];
     let dwNodes: any = test1.projects;
@@ -93,7 +93,7 @@ describe('CentralService', () => {
       nodesInds = [0,1];
       dwNodes = test1.projects;
       let result = {};
-      expect(service.getPathNodes(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
+      expect(service.getPathNodesFRA(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
     }));
 
     xit('should give back subprojects - pathNodes defined', inject([CentralService], (service: CentralService) => {
@@ -102,7 +102,7 @@ describe('CentralService', () => {
       dwNodes = test1;
       let result = null;
       let pathNodes = <PathNodes>[];
-      expect(service.getPathNodes(dwNodes, nodesCons, nodesInds, pathNodes)).toEqual(jasmine.objectContaining(result));
+      expect(service.getPathNodesFRA(dwNodes, nodesCons, nodesInds, pathNodes)).toEqual(jasmine.objectContaining(result));
     }));
   });
 });

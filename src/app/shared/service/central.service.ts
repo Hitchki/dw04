@@ -33,18 +33,20 @@ export class CentralService {
   }
 
 
-  buildPathNodes(fragment:string, pathNodes?: any[]) {
+  getPathNodes(fragment:string, dwNodes?: any[]) {
+
+    dwNodes = dwNodes ? dwNodes : [];
+
     let normalizedFragment = this.getNormalizedFragment(fragment);
     let fragmentsArray = this.getFragmentsArray(normalizedFragment);
 
     let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
 
-    let dwNodes=[];
-    pathNodes = this.getPathNodes(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
+    let pathNodes = this.getPathNodesFRA(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
     return pathNodes;
   }
 
-  getPathNodes(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes, pi?: number) {
+  getPathNodesFRA(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes, pi?: number) {
     // 'use strict';
     var pi = (pi !== undefined) ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
     pathNodes = pathNodes ? pathNodes : <PathNodes>[];
@@ -63,7 +65,7 @@ export class CentralService {
 
       let conNodeProp = nodesCons[pi+1];
       let newDwNodes = selectedNode[conNodeProp];
-      this.getPathNodes(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
+      this.getPathNodesFRA(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
     }
   }
 

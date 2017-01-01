@@ -21,6 +21,9 @@ export class MockdataService {
     //   arg => console.log(arg.json()),
     //   err => console.log(err)
     // );
+
+
+    //.json() fehlt
     return result;
 
     // return Observable.from(['observable in content-load-service from User: ' + userId]);

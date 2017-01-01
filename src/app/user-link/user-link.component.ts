@@ -33,6 +33,40 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
   { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe(
+        params => {
+          this.userId = params['userId'];
+          this.loadProject();
+        }
+      )
+  }
+
+  loadProject() {
+    //mockDataUrl: './app/shared/mockdata/data/vwl-diskussion.json' }
+    //loadProjects(userId: string, useMockdata?: true, useMockdataUrl?: string):Observable<any>
+    // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/data/vwl-diskussion.json')
+    // this.contentLoadService.loadProjects(this.userId || 'vwl')
+
+
+    // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/testdata/test1.json')
+    this.contentLoadService.loadProjects(this.userId)
+      .subscribe(
+        userDb => {
+          this.userDb = userDb;
+          this.projects = this.userDb.projects;
+          console.debug('this loaded userDb', this.userDb);
+          console.debug('this loaded json', this.userDb);
+          console.debug('this projects', this.projects);
+
+          // this.centralService.
+        }
+      );
+  }
+
+  ////////////////////////////////////////////
+
+  OnInitOld() {
     // this.route.queryParams
     //   .subscribe(
     //     queryParams => {
@@ -42,7 +76,7 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
     this.testTest();
 
     this.route.fragment
-      // .do(console.log.bind(this, 'fragment'))
+    // .do(console.log.bind(this, 'fragment'))
       .subscribe(
         fragment => {
           this.fragment = fragment;
@@ -50,14 +84,13 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
           this.userId = this.getUserId();
           // console.debug('this.userId', this.userId);
 
-          this.loadProject();
+          this.loadProjectOld();
 
-        }// (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
+        } // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
       );
-
   }
 
-  loadProject(){
+  loadProjectOld(){
     //todo change '|| franz1'
     this.contentLoadService.loadProjects(this.userId || 'vwl')
       .subscribe(

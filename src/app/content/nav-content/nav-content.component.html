@@ -1,6 +1,6 @@
 <div class="flex-item">
     <div *ngFor="let project of projects; let i=index;" #item>
-      <span>{{project.properties.title}}</span>
+      <span>{{project?.properties?.title}}</span>
       <dw-edit
         [editNode]="{node: project, index: i}"
         (onInsertNode)="insertNode($event)"
