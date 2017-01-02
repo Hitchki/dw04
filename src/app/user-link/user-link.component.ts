@@ -1,16 +1,19 @@
+import { AfterViewInit, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ContentLoadService} from "../shared/model/content-load/content-load.service";
 import {ContentPathService} from "../shared/model/content-path/content-path.service";
 import {CanComponentDeactivate} from "../shared/service/can-deactivate-guard.service";
 import {CentralService} from "../shared/service/central.service";
+import {ContentComponent} from "../content/content.component";
 
 @Component({
   selector: 'app-user-link',
   templateUrl: './user-link.component.html',
   styleUrls: ['./user-link.component.css'],
 })
-export class UserLinkComponent implements OnInit, CanComponentDeactivate {
+export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDeactivate {
+  @ViewChild(ContentComponent) private contentComponent: ContentComponent
 
   private userId: string;
   private userDb: any;
@@ -33,13 +36,27 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
   { }
 
   ngOnInit() {
-    this.route.params
+    this.route.fragment
+    // .do(console.log.bind(this, 'fragment'))
       .subscribe(
-        params => {
-          this.userId = params['userId'];
-          this.loadProject();
-        }
-      )
+        fragment => {
+          console.debug('!!!fragment!!!', fragment);
+          // this.userId = fragment.match(/^(.+?)\//g)[0];
+          let userId = fragment.slice(0, fragment.indexOf('/'));
+          console.debug('!!!userId!!!', userId);
+          this.fragment = fragment.replace(/^.+?\//,'');
+          console.debug('!!!this.fragment!!!', this.fragment);
+
+          if (userId !== this.userId) {
+            this.userId = userId;
+            this.loadProject();
+          } else {
+            this.centralService.getPathNodes(this.fragment, this.projects);
+          }
+
+          // // this.fragment = fragment;
+        } // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
+      );
   }
 
   loadProject() {
@@ -59,14 +76,41 @@ export class UserLinkComponent implements OnInit, CanComponentDeactivate {
           console.debug('this loaded json', this.userDb);
           console.debug('this projects', this.projects);
 
-          // this.centralService.
+          this.centralService.getPathNodes(this.fragment, this.projects);
         }
       );
   }
 
+  ngOnInitOld() {
+    this.route.params
+      .subscribe(
+        params => {
+          this.userId = params['userId'];
+          this.loadProject();
+        }
+      )
+
+    this.subscribeRouteFragment();
+  }
+
+  subscribeRouteFragment() {
+    this.route.fragment
+    // .do(console.log.bind(this, 'fragment'))
+      .subscribe(
+        fragment => {
+          this.fragment = fragment;
+          console.debug('!!!this.fragment', this.fragment);
+        } // (fragment) => { this.fragment = fragment; console.debug('this.fragment', this.fragment) }
+      );
+  }
+
+  ngAfterViewInit() {
+    // this.contentComponent.test();
+  }
+
   ////////////////////////////////////////////
 
-  OnInitOld() {
+  OnInitVeryOld() {
     // this.route.queryParams
     //   .subscribe(
     //     queryParams => {

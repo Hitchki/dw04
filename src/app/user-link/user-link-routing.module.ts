@@ -7,7 +7,14 @@ import {CanDeactivateGuard} from "../shared/service/can-deactivate-guard.service
 const userLinkRoutes: Routes =
 [
   { path: 'user-link', component: UserLinkComponent },
-  { path: 'user-link/:userId' , component: UserLinkComponent },
+  // { path: 'user-link/:userId',
+  //   component: UserLinkComponent,
+  //   children: [{
+  //     path: '',
+  //     component: ContentComponent
+  //   }]
+  // },
+
 
   // { path: '', redirectTo: 'user-link', pathMatch: 'full' },
   // { path: 'user-link', component: UserLinkComponent, canDeactivate:[CanDeactivateGuard] },

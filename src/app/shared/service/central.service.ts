@@ -52,8 +52,9 @@ export class CentralService {
     pathNodes = pathNodes ? pathNodes : <PathNodes>[];
     // var partialFragment = pf[pi].partialRoute;
 
-    if (pi === nodesCons.length) {
+    if (pi === nodesCons.length || !dwNodes) {
       // pathNodes.push(getSinglePathNode());
+      console.log('pathNodes', pathNodes);
       return pathNodes;
     } else {
       let partialRoute = nodesCons[pi];

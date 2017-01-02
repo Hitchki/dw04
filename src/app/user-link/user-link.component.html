@@ -16,6 +16,7 @@
 <div>
   <dw-content name="franz1" [projects]="projects" [mainContent]="mainContent" [infoContent]="infoContent"></dw-content>
 </div>
+<router-outlet></router-outlet>
 
 <input type="text" [(ngModel)]="userId">
 <button (click)="save(userId)">Save</button>

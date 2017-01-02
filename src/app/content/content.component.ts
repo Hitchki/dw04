@@ -29,8 +29,12 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.test();
   }
 
+  test() {
+    console.log('function test() in contentComponent got called');
+  }
 
   ////////////////////////////////////////////
 
