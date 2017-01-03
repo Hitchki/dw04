@@ -4,7 +4,8 @@ export class EditElement {
 
   onInsertNode(editNode) {
     console.log('onInsertNode', editNode);
-    let newNode = prompt('insert new node');
+    let newNodeText = prompt('insert new node');
+    let newNode = {"text": newNodeText};
     editNode.dwNodes.splice(editNode.index, 0, newNode);
   }
 

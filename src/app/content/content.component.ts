@@ -12,10 +12,14 @@ import {PathNodes, PathNode} from "../shared/service/central.service.interface";
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  @Input() name: string;
-  @Input() projects: any;
-  @Input() mainContent: any;
-  @Input() infoContent: any;
+  // @Input() name: string;
+  // @Input() private projects: any;
+  // @Input() mainContent: any;
+  // @Input() infoContent: any;
+
+  private projects: any;
+  private mainContent: any;
+  private infoContent: any;
 
   // @Output() onSelectNode = new EventEmitter<number>();
   // @Output() onClick = new EventEmitter<number>();
@@ -44,11 +48,28 @@ export class ContentComponent implements OnInit {
   }
 
   main(pathNodes) {
+
+    // this.projects = pathNodes[0].dwNodes;
+    // this.mainContent = pathNodes[2].dwNodes;
+
+    // pathNodes.forEach(
+    //   (pathNode: PathNode) => {
+    //     //console.table(dwNode);
+    //     if (pathNode.type === 'projects') {
+    //       this.projects = pathNode.dwNodes;
+    //     }
+    //   }
+    // );
+
     pathNodes.forEach(
-      (pathNode: PathNode) => {
-        //console.table(dwNode);
-        if (pathNode.type === 'projects') {
-          this.projects = pathNode.dwNodes;
+      (pathNode: PathNode, i: number, pn: any[]) => {
+        let len = pn.length;
+        let pNode = pn[len-i-1];
+        console.log('pn[len-i-1]', pNode);
+        if (pNode.type === 'projects') {
+          this.projects = pNode.dwNodes;
+        } else if (pNode.type === 'normtext') {
+          this.mainContent = pNode.dwNodes;
         }
       }
     );

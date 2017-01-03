@@ -1,6 +1,11 @@
 <div *ngFor="let dwNode of dwNodes; let i=index;" #item>
   <span>{{dwNodes?.properties?.title}}</span>
-  <span>{{dwNode | json}}</span>
+  <!--<span>{{dwNode | json}}</span>-->
+
+  <input type="text" [(ngModel)]="dwNode.text">
+
+  <span (click)="onClick($event, dwNode, i, item)">{{dwNode.text}}</span>
+
   <dw-edit
     [editNode]="{dwNode: dwNode, index: i, dwNodes: dwNodes}"
     (onInsertNode)="onInsertNode($event)"
