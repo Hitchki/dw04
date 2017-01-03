@@ -2,10 +2,14 @@
 // e.g. projectsFragment: projects/0/subprojects/0
 export type PathNodes = PathNode[];
 export interface PathNode {
-  projectsFragment?: string;
+  // projectsFragment?: string;
+  //todo userFragment entfernen
   userFragment?: string;
   // editFragment?: string;
   // firebaseFragment: string;
+  indexFragment?: string;
+  dwNodesFragment?: string;
+  fragment?: string;
   partialRoute: string;
   type: string;
   dwNodes: any[];
