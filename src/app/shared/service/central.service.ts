@@ -14,6 +14,7 @@ export class CentralService {
   private pathNodes: PathNodes;
   private userId;
   private isOwner = true;
+  private myPathNodes: PathNodes;
 
 
   constructor(
@@ -46,7 +47,6 @@ export class CentralService {
     let fragmentsArray = this.getFragmentsArray(normalizedFragment);
 
     let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
-
     let pathNodes1 = this.getPathNodesFRA(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
 
     console.log('this.pathNodesSubject.next', pathNodes1);
@@ -56,26 +56,32 @@ export class CentralService {
 
   getPathNodesFRA(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes, pi?: number) {
     // 'use strict';
-    var pi = (pi !== undefined) ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
-    pathNodes = pathNodes ? pathNodes : <PathNodes>[];
+    pi = (pi !== undefined) ? pi + 1 : 0;   //pi...pathIndex (=pathLevel)
+    var pathNodes = pathNodes ? pathNodes : <PathNodes>[];
     // var partialFragment = pf[pi].partialRoute;
 
     if (pi === nodesCons.length || !dwNodes) {
       // pathNodes.push(getSinglePathNode());
       console.log('pathNodesBeforeReturn', pathNodes);
+      this.myPathNodes = pathNodes;
       return pathNodes;
     } else {
-      let partialRoute = nodesCons[pi];
       let selectedNodeIndex = nodesInds[pi];
       let selectedNode = dwNodes[selectedNodeIndex];
+
+      let partialRoute = nodesCons[pi];
 
       let newPathNode: PathNode = this.getSinglePathNode(dwNodes, partialRoute, selectedNodeIndex);
       pathNodes.push(newPathNode);
 
-      let conNodeProp = nodesCons[pi+1];
-      let newDwNodes = selectedNode[conNodeProp];
-      this.getPathNodesFRA(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
-      return pathNodes;
+      if (!selectedNode) {
+        // return pathNodes;
+        this.getPathNodesFRA(undefined, nodesCons, nodesInds,pathNodes, pi);
+      } else {
+        let conNodeProp = nodesCons[pi+1];
+        let newDwNodes = selectedNode[conNodeProp];
+        this.getPathNodesFRA(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
+      }
     }
   }
 
