@@ -1,20 +1,26 @@
 import {PathNodes, FragmentsHelpers, PathNode} from "./central.service.interface"
 import { Injectable } from '@angular/core';
 import {ContentLoadService} from "../model/content-load/content-load.service";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 
 
 @Injectable()
 export class CentralService {
 
+  private pathNodesSubject = new Subject<PathNodes>();
+  public pathNodes$ = this.pathNodesSubject.asObservable();
+
   private pathNodes: PathNodes;
   private userId;
   private isOwner = true;
 
+
   constructor(
     private contentLoadService: ContentLoadService
-  ) {}
+  ) {
+
+  }
 
   getNormalizedFragment(fragment:string){
     let normFragment = fragment.replace(/\/\/+/g, '/');
@@ -32,7 +38,6 @@ export class CentralService {
     return fragmentsHelpers;
   }
 
-
   getPathNodes(fragment:string, dwNodes?: any[]) {
 
     dwNodes = dwNodes ? dwNodes : [];
@@ -42,8 +47,11 @@ export class CentralService {
 
     let fragmentsHelpers = this.getNodesArrays(fragmentsArray);
 
-    let pathNodes = this.getPathNodesFRA(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
-    return pathNodes;
+    let pathNodes1 = this.getPathNodesFRA(dwNodes, fragmentsHelpers.nodesCons, fragmentsHelpers.nodesInds);
+
+    console.log('this.pathNodesSubject.next', pathNodes1);
+    this.pathNodesSubject.next(pathNodes1);
+    return pathNodes1;
   }
 
   getPathNodesFRA(dwNodes, nodesCons: string[], nodesInds: number[], pathNodes?: PathNodes, pi?: number) {
@@ -54,7 +62,7 @@ export class CentralService {
 
     if (pi === nodesCons.length || !dwNodes) {
       // pathNodes.push(getSinglePathNode());
-      console.log('pathNodes', pathNodes);
+      console.log('pathNodesBeforeReturn', pathNodes);
       return pathNodes;
     } else {
       let partialRoute = nodesCons[pi];
@@ -67,6 +75,7 @@ export class CentralService {
       let conNodeProp = nodesCons[pi+1];
       let newDwNodes = selectedNode[conNodeProp];
       this.getPathNodesFRA(newDwNodes, nodesCons, nodesInds,pathNodes, pi);
+      return pathNodes;
     }
   }
 

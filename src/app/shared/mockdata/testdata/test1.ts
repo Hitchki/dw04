@@ -15,17 +15,15 @@ export var test1 =
           ]
         },
         {
-          "subprojects": {
-            "normtext":
-            [
-              {
-                "text": "Flassbecks Thesen"
-              },
-              {
-                "text": "Jede Wirtschaft hat einen Materialdurchsatz."
-              }
-            ]
-          }
+          "normtext":
+          [
+            {
+              "text": "Flassbecks Thesen"
+            },
+            {
+              "text": "Jede Wirtschaft hat einen Materialdurchsatz."
+            }
+          ]
         }
       ]
     }]

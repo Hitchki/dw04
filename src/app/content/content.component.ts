@@ -3,6 +3,8 @@ import {ProjectsService} from "../shared/model/projects/projects.service";
 import {Router, ActivatedRoute, Params} from "@angular/router";
 import {ContentPathService} from "../shared/model/content-path/content-path.service";
 import {RoutePath} from "../shared/model/content-nodes/content-nodes";
+import {CentralService} from "../shared/service/central.service";
+import {PathNodes, PathNode} from "../shared/service/central.service.interface";
 
 @Component({
   selector: 'dw-content',
@@ -19,17 +21,37 @@ export class ContentComponent implements OnInit {
   // @Output() onClick = new EventEmitter<number>();
   private projectUrl: string;
   private subProjectUrl: string;
+  private pathNodes: PathNodes;
   // private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private projectsService: ProjectsService,
-    private contentPathService: ContentPathService
+    private contentPathService: ContentPathService,
+    private centralService: CentralService
   ) { }
 
   ngOnInit() {
     this.test();
+    this.centralService.pathNodes$.subscribe(
+      pathNodes => {
+        this.pathNodes = pathNodes;
+        console.log('###this.pathNodes## contentComponent', this.pathNodes);
+        this.main(this.pathNodes);
+      }
+    )
+  }
+
+  main(pathNodes) {
+    pathNodes.forEach(
+      (pathNode: PathNode) => {
+        //console.table(dwNode);
+        if (pathNode.type === 'projects') {
+          this.projects = pathNode.dwNodes;
+        }
+      }
+    );
   }
 
   test() {
