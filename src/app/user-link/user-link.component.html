@@ -14,8 +14,10 @@
 <a href="http://orf.at/">http://orf.at/</a>
 
 <div>
-  <input type="text" [(ngModel)]="userId" disabled>
-  <input type="text" [(ngModel)]="userIdToSave" value="tmp">
+  <label for="userId">userId</label>
+  <input type="text" [(ngModel)]="userId" id="userId">
+  <label for="userIdToSave">userIdToSave</label>
+  <input type="text" [(ngModel)]="userIdToSave" value="tmp" id="userIdToSave">
   <button (click)="save(userIdToSave)">Save</button>
 </div>
 
