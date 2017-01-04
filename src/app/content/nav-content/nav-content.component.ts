@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {PathNode} from "../../shared/service/central.service.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'dw-nav-content',
@@ -7,8 +9,10 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class NavContentComponent implements OnInit {
   @Input() projects: any;
+  @Input() pathNode: PathNode;
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -23,5 +27,16 @@ export class NavContentComponent implements OnInit {
 
   addNodeLevel(node) {
     console.debug('addNodeLevel', node);
+  }
+
+  onClick($event, dwNode, index, item) {
+    let fragment = this.pathNode.dwNodesFragment;
+    console.log('this.pathNode.dwNodesFragment', this.pathNode.dwNodesFragment);
+    // this.router.navigate([this.pathNode.dwNodesFragment]);
+    console.log('pathNode', this.pathNode);
+    console.log('$event', $event);
+    console.log('dwNode', dwNode);
+    console.log('index', index);
+    console.log('item', item);
   }
 }

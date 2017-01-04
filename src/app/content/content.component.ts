@@ -18,6 +18,8 @@ export class ContentComponent implements OnInit {
   // @Input() infoContent: any;
 
   private projects: any;
+  private navPathNode: PathNode;
+
   private mainContent: any;
   private infoContent: any;
 
@@ -68,6 +70,7 @@ export class ContentComponent implements OnInit {
         console.log('pn[len-i-1]', pNode);
         if (pNode.type === 'projects') {
           this.projects = pNode.dwNodes;
+          this.navPathNode = pNode;
         } else if (pNode.type === 'normtext') {
           this.mainContent = pNode.dwNodes;
         }

@@ -9,9 +9,21 @@
         (onAddNodeLevel)="addNodeLevel($event)"
       >
       </dw-edit>
+
+      <div *ngFor="let subproject of project?.subprojects; let si=index;" #subpro>
+        <!--<span>{{subproject | json}}</span>-->
+        <span (click)="onClick($event, subproject, i, item)">{{subproject?.properties?.title}}</span>
+        <!--<dw-edit-->
+          <!--[editNode]="{node: project, index: i}"-->
+          <!--(onInsertNode)="insertNode($event)"-->
+          <!--(onDeleteNode)="deleteNode($event)"-->
+          <!--(onAddNodeLevel)="addNodeLevel($event)"-->
+        <!--&gt;-->
+        <!--</dw-edit>-->
+      </div>
+
     </div>
     <!--<div *ngFor="let project of projects"><pre>{{project | json}}</pre></div>-->
-
 </div>
 
 
