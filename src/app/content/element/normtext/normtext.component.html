@@ -2,7 +2,9 @@
   <span>{{dwNodes?.properties?.title}}</span>
   <!--<span>{{dwNode | json}}</span>-->
 
-  <input type="text" [(ngModel)]="dwNode.text">
+  <!--<input type="text" [(ngModel)]="dwNode.text">-->
+  <!--<span [(ngModel)]="dwNode.text" contenteditable="true"></span>-->
+  <span contenteditable="true">{{dwNode.text}}</span>
 
   <span (click)="onClick($event, dwNode, i, item)">{{dwNode.text}}</span>
 

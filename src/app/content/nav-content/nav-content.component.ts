@@ -34,7 +34,7 @@ export class NavContentComponent implements OnInit {
   }
 
   onClick($event, dwNode, index, item) {
-    let fragment = 'test2/' + this.pathNode.dwNodesFragment + '/0/subprojects/' + index + '/normtext';
+    let fragment = this.centralServie.userId + '/' + this.pathNode.dwNodesFragment + '/0/subprojects/' + index + '/normtext';
     let url = 'user-link';
 
     // fragment = decodeURIComponent(fragment);

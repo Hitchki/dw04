@@ -72,6 +72,9 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
         userDb => {
           this.userDb = userDb;
           this.projects = this.userDb.projects;
+
+          this.centralService.userId = this.userId;
+
           console.debug('this loaded userDb', this.userDb);
           console.debug('this loaded json', this.userDb);
           console.debug('this projects', this.projects);

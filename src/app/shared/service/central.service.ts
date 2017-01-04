@@ -13,7 +13,7 @@ export class CentralService {
   public pathNodes$ = this.pathNodesSubject.asObservable();
 
   private pathNodes: PathNodes;
-  private userId;
+  public userId;
   private isOwner = true;
   private myPathNodes: PathNodes;
 
