@@ -2,6 +2,7 @@ import {PathNodes, FragmentsHelpers, PathNode} from "./central.service.interface
 import { Injectable } from '@angular/core';
 import {ContentLoadService} from "../model/content-load/content-load.service";
 import {Observable, Subject} from "rxjs";
+import {NavigationExtras, Router} from "@angular/router";
 
 
 
@@ -18,7 +19,8 @@ export class CentralService {
 
 
   constructor(
-    private contentLoadService: ContentLoadService
+    private contentLoadService: ContentLoadService,
+    private router: Router
   ) {
 
   }
@@ -106,6 +108,18 @@ export class CentralService {
     return pathItem;
   }
 
+
+  navigate(url: string, fragment: string) {
+    let navigationExtras: NavigationExtras = {
+      // queryParams: { 'session_id': sessionId },
+      fragment: fragment
+    };
+
+    this.router.navigate(['/user-link'], navigationExtras);
+  }
+
+
+  ////////////////////////////////////////////////////////
 
   //fragment is without userId
   getPathNodesFromFragment(fragment)  {

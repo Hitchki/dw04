@@ -12,7 +12,7 @@
 
       <div *ngFor="let subproject of project?.subprojects; let si=index;" #subpro>
         <!--<span>{{subproject | json}}</span>-->
-        <span (click)="onClick($event, subproject, i, item)">{{subproject?.properties?.title}}</span>
+        <span (click)="onClick($event, subproject, si, item)">{{subproject?.properties?.title}}</span>
         <!--<dw-edit-->
           <!--[editNode]="{node: project, index: i}"-->
           <!--(onInsertNode)="insertNode($event)"-->

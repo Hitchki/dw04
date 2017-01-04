@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {PathNode} from "../../shared/service/central.service.interface";
 import {Router} from "@angular/router";
+import {CentralService} from "../../shared/service/central.service";
 
 @Component({
   selector: 'dw-nav-content',
@@ -11,7 +12,10 @@ export class NavContentComponent implements OnInit {
   @Input() projects: any;
   @Input() pathNode: PathNode;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private centralServie: CentralService
+  ) {
   }
 
   ngOnInit() {
@@ -30,13 +34,18 @@ export class NavContentComponent implements OnInit {
   }
 
   onClick($event, dwNode, index, item) {
-    let fragment = this.pathNode.dwNodesFragment;
-    console.log('this.pathNode.dwNodesFragment', this.pathNode.dwNodesFragment);
-    // this.router.navigate([this.pathNode.dwNodesFragment]);
-    console.log('pathNode', this.pathNode);
-    console.log('$event', $event);
-    console.log('dwNode', dwNode);
-    console.log('index', index);
-    console.log('item', item);
+    let fragment = 'test2/' + this.pathNode.dwNodesFragment + '/0/subprojects/' + index;
+    let url = 'user-link';
+
+    // fragment = decodeURIComponent(fragment);
+    // console.log('this.pathNode.dwNodesFragment', this.pathNode.dwNodesFragment);
+    console.log('url', url);
+    console.log('fragment', fragment);
+    this.centralServie.navigate(url, fragment);
+    // console.log('pathNode', this.pathNode);
+    // console.log('$event', $event);
+    // console.log('dwNode', dwNode);
+    // console.log('index', index);
+    // console.log('item', item);
   }
 }
