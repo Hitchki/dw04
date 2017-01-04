@@ -14,13 +14,17 @@
 <a href="http://orf.at/">http://orf.at/</a>
 
 <div>
+  <input type="text" [(ngModel)]="userId" disabled>
+  <input type="text" [(ngModel)]="userIdToSave" value="tmp">
+  <button (click)="save(userIdToSave)">Save</button>
+</div>
+
+<div>
   <!--<dw-content name="franz1" [projects]="projects" [mainContent]="mainContent" [infoContent]="infoContent"></dw-content>-->
   <dw-content></dw-content>
 </div>
 <router-outlet></router-outlet>
 
-<input type="text" [(ngModel)]="userId">
-<button (click)="save(userId)">Save</button>
 
 <div>
   <input type="text" [(ngModel)]="nodeByUrl">
