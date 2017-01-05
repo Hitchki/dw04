@@ -113,6 +113,11 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
 
   ////////////////////////////////////////////
 
+
+  buttonHerumspiel($event) {
+    console.log('buttonHerumspiel', $event);
+  }
+
   OnInitVeryOld() {
     // this.route.queryParams
     //   .subscribe(

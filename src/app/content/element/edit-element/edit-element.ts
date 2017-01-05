@@ -17,6 +17,8 @@ export class EditElement {
 
   onAddNodeLevel(editNode) {
     // alert('onAddNodeLevel');
-    console.log('onInsertNode', editNode);
+    console.log('edit-element-onAddNodeLevel', editNode);
+    let con = 'meta-normtext';
+    editNode.dwNode[con] = 'Na hallo, das ist ja steil!'
   }
 }
