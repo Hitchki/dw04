@@ -7,6 +7,7 @@ import {SimPlaygroundComponent} from "./sim-playground/sim-playground.component"
 import {Play3Component} from "./play3/play3.component";
 import {Play2Component} from "./play2/play2.component";
 import {Play1Component} from "./play1/play1.component";
+import {CssComponent} from "./css/css.component";
 
 const playgroundRoutes: Routes =
 [
@@ -15,6 +16,10 @@ const playgroundRoutes: Routes =
     component: PlaygroundComponent,
     children:
     [
+      {
+        path: 'css',
+        component: CssComponent
+      },
       {
         path: 'git-playground',
         component: GitPlaygroundComponent

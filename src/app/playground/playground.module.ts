@@ -8,11 +8,13 @@ import {Play1Module} from "./play1/play1.module";
 import {Play2Module} from "./play2/play2.module";
 import {Play3Module} from "./play3/play3.module";
 import {SimPlaygroundModule} from "./sim-playground/sim-playground.module";
+import {CssModule} from "./css/css.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    CssModule,
     PlaygroundRoutingModule,
     GitPlaygroundModule,
     Play1Module,
