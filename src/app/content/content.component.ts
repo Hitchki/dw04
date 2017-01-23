@@ -56,13 +56,25 @@ export class ContentComponent implements OnInit {
     pathNodes.forEach(
       (pathNode: PathNode, i: number, pn: PathNodes) => {
         let len = pn.length;
-        let pNode = pn[len-i-1];
-        // console.log('pn[len-i-1]', pNode);
-        if (pNode.type === 'projects') {
-          this.projects = pNode.dwNodes;
-          this.navPathNode = pNode;
-        } else if (pNode.type === 'normtext') {
-          this.mainContent = pNode.dwNodes;
+        /// start with last index/node and goto first index/node
+        let pNode1 = pn[len-i-1];
+        // console.log('pn[len-i-1]', pNode1);
+        if (pNode1.type === 'projects') {
+          this.projects = pNode1.dwNodes;
+          this.navPathNode = pNode1;
+        } else if (pNode1.type === 'normtext') {
+          //todo2 >= correct?
+          let pNode2 = (len-i-2 >= 0) ? pn[len-i-2] : null;
+
+          if (pNode2.type === 'normtext') {
+            /// falls zwei normtextnodes hintereinander => erster mainContent, => zweiter infoContent
+            this.mainContent = pNode2.dwNodes;
+            this.infoContent = pNode1.dwNodes;
+          } else {
+            /// falls nur ein einzelner normtextnode => erster mainContent, => comments auf infoContent
+            this.mainContent = pNode1.dwNodes;
+            // this.infoContent = pNode1.dwNodes;
+          }
         }
       }
     );
