@@ -1,12 +1,15 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {CentralService} from "./central-services/central.service";
+import {ContentLoadService} from "./central-services/content-load.service";
 
 @NgModule({
   imports: [
     CommonModule
   ],
   providers: [
-
+    CentralService,
+    ContentLoadService
   ]
 })
 export class CoreModule {

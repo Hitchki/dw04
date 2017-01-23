@@ -7,14 +7,15 @@ import {ConfigService} from "../config/config.service";
 import {FirebaseService} from "../firebase/firebase.service";
 import {MockdataService} from "../mockdata/mockdata.service";
 import {AngularFire, AngularFireDatabase} from "angularfire2";
-import {FragmentsHelpers} from "./central.service.interface";
+import {FragmentsHelpers, PathNodes} from "./central.service.interface";
+import {test1} from "../mockdata/testdata/test1";
 
 class ContentLoadServiceStub {
   public config: any;
   private configService: any;
 }
 
-describe('CentralService', () => {
+describe('CentralService as it is', () => {
 
   let contentLoadService;
 
@@ -26,9 +27,32 @@ describe('CentralService', () => {
     });
   });
 
-  it('should ...', inject([CentralService], (service: CentralService) => {
+  xit('should ...', inject([CentralService], (service: CentralService) => {
     expect(service).toBeTruthy();
   }));
+
+  xdescribe('getNormalizedFragment', ()=> {
+    it('should not change correct fragments', inject([CentralService], (service: CentralService) => {
+      let fragment = 'franz/ulrich';
+      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
+    }));
+
+    it('should replace duplicate // with one /', inject([CentralService], (service: CentralService) => {
+      let fragment = 'franz//ulrich';
+      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
+    }));
+
+    it('should replace duplicate // with one /', inject([CentralService], (service: CentralService) => {
+      let fragment = 'franz///ulrich';
+      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
+    }));
+
+    it('should remove duplicates /// and / at the end', inject([CentralService], (service: CentralService) => {
+      let fragment = 'franz///ulrich/';
+      expect(service.getNormalizedFragment(fragment)).toBe('franz/ulrich');
+    }));
+  });
+
 
   xdescribe('getNodesArrays', ()=> {
     it('should give back correct fragmentsArray - even case', inject([CentralService], (service: CentralService) => {
@@ -60,4 +84,25 @@ describe('CentralService', () => {
     }));
   });
 
+  xdescribe('getPathNodesFRA test1', ()=> {
+    let nodesCons: string[];
+    let nodesInds: number[];
+    let dwNodes: any = test1.projects;
+    it('should give back subprojects - pathNodes undefined', inject([CentralService], (service: CentralService) => {
+      nodesCons = ['projects', 'subprojects'];
+      nodesInds = [0,1];
+      dwNodes = test1.projects;
+      let result = {};
+      expect(service.getPathNodesFRA(dwNodes, nodesCons, nodesInds)).toEqual(jasmine.objectContaining(result));
+    }));
+
+    xit('should give back subprojects - pathNodes defined', inject([CentralService], (service: CentralService) => {
+      nodesCons = ['subprojects'];
+      nodesInds = [0];
+      dwNodes = test1;
+      let result = null;
+      let pathNodes = <PathNodes>[];
+      expect(service.getPathNodesFRA(dwNodes, nodesCons, nodesInds, pathNodes)).toEqual(jasmine.objectContaining(result));
+    }));
+  });
 });

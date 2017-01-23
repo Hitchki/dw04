@@ -1,10 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {ProjectsService} from "../shared/model/projects/projects.service";
 import {Router, ActivatedRoute, Params} from "@angular/router";
-import {ContentPathService} from "../shared/model/content-path/content-path.service";
-import {RoutePath} from "../shared/model/content-nodes/content-nodes";
-import {CentralService} from "../shared/service/central.service";
-import {PathNodes, PathNode} from "../shared/service/central.service.interface";
+
+import {PathNode, PathNodes} from "../core/central-services/path-node.interface";
+import {CentralService} from "../core/central-services/central.service";
 
 @Component({
   selector: 'dw-content',
@@ -12,10 +10,6 @@ import {PathNodes, PathNode} from "../shared/service/central.service.interface";
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  // @Input() name: string;
-  // @Input() private projects: any;
-  // @Input() mainContent: any;
-  // @Input() infoContent: any;
 
   private projects: any;
   private navPathNode: PathNode;
@@ -23,8 +17,6 @@ export class ContentComponent implements OnInit {
   private mainContent: any;
   private infoContent: any;
 
-  // @Output() onSelectNode = new EventEmitter<number>();
-  // @Output() onClick = new EventEmitter<number>();
   private projectUrl: string;
   private subProjectUrl: string;
   private pathNodes: PathNodes;
@@ -33,13 +25,11 @@ export class ContentComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private projectsService: ProjectsService,
-    private contentPathService: ContentPathService,
     private centralService: CentralService
   ) { }
 
   ngOnInit() {
-    this.test();
+    // this.test();
     this.centralService.pathNodes$.subscribe(
       pathNodes => {
         this.pathNodes = pathNodes;
@@ -64,10 +54,10 @@ export class ContentComponent implements OnInit {
     // );
 
     pathNodes.forEach(
-      (pathNode: PathNode, i: number, pn: any[]) => {
+      (pathNode: PathNode, i: number, pn: PathNodes) => {
         let len = pn.length;
         let pNode = pn[len-i-1];
-        console.log('pn[len-i-1]', pNode);
+        // console.log('pn[len-i-1]', pNode);
         if (pNode.type === 'projects') {
           this.projects = pNode.dwNodes;
           this.navPathNode = pNode;
@@ -85,12 +75,6 @@ export class ContentComponent implements OnInit {
   ////////////////////////////////////////////
 
 
-  // click($event) {
-  //   console.log($event);
-  //   $event.target.innerHTML += " ...ich wurde geklickt!!"
-  //   this.onClick.emit(23);
-  // }
-
   onClickNode(project, $event, i, item) {
     console.debug('onClickNode', project, $event, i, item);
   }
@@ -100,21 +84,10 @@ export class ContentComponent implements OnInit {
     // this.router.navigate([3, 'subprojects', 3]);
   }
 
-  buildUrlPath(projectUrl: string) {
-    let routePath:RoutePath = this.contentPathService.getUrlPath(projectUrl);
-  }
+  // buildUrlPath(projectUrl: string) {
+  //   let routePath:RoutePath = this.contentPathService.getUrlPath(projectUrl);
+  // }
 
-  // onInsertNode(editNode) {
-  //   console.debug('insertNode', editNode);
-  // }
-  //
-  // onDeleteNode(deleteNode) {
-  //   console.debug('deleteNode', deleteNode);
-  // }
-  //
-  // onAddNodeLevel(node) {
-  //   console.debug('addNodeLevel', node);
-  // }
 }
 
 

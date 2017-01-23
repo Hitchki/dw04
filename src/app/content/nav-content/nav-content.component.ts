@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {PathNode} from "../../shared/service/central.service.interface";
 import {Router} from "@angular/router";
-import {CentralService} from "../../shared/service/central.service";
+import {CentralService} from "../../core/central-services/central.service";
+import {PathNode} from "../../core/central-services/path-node.interface";
 
 @Component({
   selector: 'dw-nav-content',
@@ -34,13 +34,15 @@ export class NavContentComponent implements OnInit {
   }
 
   onClick($event, dwNode, index, item) {
-    let fragment = this.centralServie.userId + '/' + this.pathNode.dwNodesFragment + '/0/subprojects/' + index + '/normtext';
+    //todo dwNodesFragment
+    // let fragment = this.centralServie.userId + '/' + this.pathNode.dwNodesFragment + '/0/subprojects/' + index + '/normtext';
+    let fragment = this.centralServie.userId + '/' + this.pathNode.fragment + '/subprojects/' + index + '/normtext';
+
     let url = 'user-link';
 
     // fragment = decodeURIComponent(fragment);
-    // console.log('this.pathNode.dwNodesFragment', this.pathNode.dwNodesFragment);
-    console.log('url', url);
-    console.log('fragment', fragment);
+    // console.log('url', url);
+    // console.log('fragment', fragment);
     this.centralServie.navigate(url, fragment);
     // console.log('pathNode', this.pathNode);
     // console.log('$event', $event);

@@ -13,7 +13,6 @@ export class ContentNodesService {
     var contentPathItems: ContentPath = contentPathItems ? contentPathItems : [];
     // if (!contentNodes || !path || !path[pathLevel] || !contentNodes[path[pathLevel]]) {
     if (!contentNodes || !path || !path[pathLevel]) {
-      console.log('nix params');
       return contentPathItems;
     } else {
       let selectedNodeIndex = path[pathLevel].selectedIndex;

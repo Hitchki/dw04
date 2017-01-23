@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FirebaseService} from "../shared/firebase/firebase.service";
-import {MockdataService} from "../shared/mockdata/mockdata.service";
-import {ContentLoadService} from "../shared/model/content-load/content-load.service";
-import {ContentPathService} from "../shared/model/content-path/content-path.service";
 import {ActivatedRoute} from "@angular/router";
+import {FirebaseService} from "../core/firebase/firebase.service";
+import {MockdataService} from "../core/mockdata/mockdata.service";
+import {ContentLoadService} from "../core/central-services/content-load.service";
 
 @Component({
   selector: 'app-playground',
@@ -20,13 +19,11 @@ export class PlaygroundComponent implements OnInit {
     private firebaseService: FirebaseService,
     private mockdataService: MockdataService,
     private contentLoadService: ContentLoadService,
-    private contentPathService: ContentPathService
   ) { }
 
   ngOnInit() {
     this.getProjectFromFirebase(this.database.user.name);
     this.projectUrl = this.route.snapshot.params['projectUrl'];
-    // this.contentPathService = this.projectUrl;
   }
 
   getProject() {
@@ -35,7 +32,7 @@ export class PlaygroundComponent implements OnInit {
   }
 
   getProjectFromContentLoadService() {
-    this.contentLoadService.loadProjects('', true, './app/shared/mockdata/data/vwl-diskussion.json')
+    this.contentLoadService.loadProjects('', true, './app/core/mockdata/data/vwl-diskussion.json')
       .subscribe(
         data => { this.projects = data.json(); console.log('loadservice-data: ',this.projects )},
         (err) => console.log('data-err: ', err),

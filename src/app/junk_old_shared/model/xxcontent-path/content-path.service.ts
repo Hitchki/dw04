@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {RoutePath, RoutePathItem} from "../content-nodes/content-nodes";
+import {RoutePath, RoutePathItem} from "../xxcontent-nodes/content-nodes";
 
 @Injectable()
 export class ContentPathService {

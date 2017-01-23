@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ContentComponent} from "../content/content.component";
 import {UserLinkComponent} from "./user-link.component";
-import {CanDeactivateGuard} from "../shared/service/can-deactivate-guard.service";
+import {CanDeactivateGuard} from "../junk_old_shared/service/can-deactivate-guard.service";
 
 const userLinkRoutes: Routes =
 [

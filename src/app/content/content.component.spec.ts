@@ -4,8 +4,7 @@ import { By } from '@angular/platform-browser';
 import {DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import { ContentComponent } from './content.component';
-import {ProjectsService} from "../shared/model/projects/projects.service";
-import {ConfigService} from "../shared/config/config.service";
+import {ConfigService} from "../core/config/config.service";
 
 describe('ContentComponent', () => {
   let component: ContentComponent;
@@ -14,7 +13,7 @@ describe('ContentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ContentComponent ],
-      providers: [ProjectsService, ConfigService],
+      providers: [ ConfigService],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();

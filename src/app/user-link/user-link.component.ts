@@ -1,11 +1,11 @@
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ContentLoadService} from "../shared/model/content-load/content-load.service";
-import {ContentPathService} from "../shared/model/content-path/content-path.service";
-import {CanComponentDeactivate} from "../shared/service/can-deactivate-guard.service";
-import {CentralService} from "../shared/service/central.service";
+
+import {CanComponentDeactivate} from "../junk_old_shared/service/can-deactivate-guard.service";
 import {ContentComponent} from "../content/content.component";
+import {ContentLoadService} from "../core/central-services/content-load.service";
+import {CentralService} from "../core/central-services/central.service";
 
 @Component({
   selector: 'app-user-link',
@@ -31,7 +31,6 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
     private route: ActivatedRoute,
     private router: Router,
     private contentLoadService: ContentLoadService,
-    private contentPathService: ContentPathService,
     private centralService: CentralService)
   { }
 
@@ -40,12 +39,10 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
     // .do(console.log.bind(this, 'fragment'))
       .subscribe(
         fragment => {
-          console.debug('!!!fragment!!!', fragment);
           // this.userId = fragment.match(/^(.+?)\//g)[0];
           let userId = fragment.slice(0, fragment.indexOf('/'));
-          console.debug('!!!userId!!!', userId);
           this.fragment = fragment.replace(/^.+?\//,'');
-          console.debug('!!!this.fragment!!!', this.fragment);
+          // console.debug('!!!this.fragment!!!', this.fragment);
 
           if (userId !== this.userId) {
             this.userId = userId;
@@ -60,13 +57,13 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
   }
 
   loadProject() {
-    //mockDataUrl: './app/shared/mockdata/data/vwl-diskussion.json' }
+    //mockDataUrl: './app/core/mockdata/data/vwl-diskussion.json' }
     //loadProjects(userId: string, useMockdata?: true, useMockdataUrl?: string):Observable<any>
-    // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/data/vwl-diskussion.json')
+    // this.contentLoadService.loadProjects(this.userId, true, './app/core/mockdata/data/vwl-diskussion.json')
     // this.contentLoadService.loadProjects(this.userId || 'vwl')
 
     //Todo .json() falls mockdata
-    // this.contentLoadService.loadProjects(this.userId, true, './app/shared/mockdata/testdata/test1.json')
+    // this.contentLoadService.loadProjects(this.userId, true, './app/core/mockdata/testdata/test1.json')
     this.contentLoadService.loadProjects(this.userId)
       .subscribe(
         userDb => {
@@ -75,9 +72,9 @@ export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDea
 
           this.centralService.userId = this.userId;
 
-          console.debug('this loaded userDb', this.userDb);
-          console.debug('this loaded json', this.userDb);
-          console.debug('this projects', this.projects);
+          // console.debug('this loaded userDb', this.userDb);
+          // console.debug('this loaded json', this.userDb);
+          // console.debug('this projects', this.projects);
 
           this.centralService.getPathNodes(this.fragment, this.projects);
         }

@@ -7,15 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {ContentModule} from "./content/content.module";
 import {SimulationModule} from "./simulation/simulation.module";
-import {ConfigService} from "./shared/config/config.service";
-import {ProjectsService} from "./shared/model/projects/projects.service";
-import {ContentLoadService} from "./shared/model/content-load/content-load.service";
-import {MockdataService} from "./shared/mockdata/mockdata.service";
-import {FirebaseService} from "./shared/firebase/firebase.service";
 import {firebaseConfig} from "../environments/firebase.config";
 import { AngularFireModule } from 'angularfire2/index';
 import {PlaygroundModule} from "./playground/playground.module";
-import {ContentPathService} from "./shared/model/content-path/content-path.service";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AdminRoutingModule} from "./admin/admin-routing.module";
 import {AdminComponent} from "./admin/admin.component";
@@ -24,7 +18,13 @@ import {PlaygroundRoutingModule} from "./playground/playground-routing.module";
 import {UserModule} from "./user/user.module";
 import {UserLinkComponent} from "./user-link/user-link.component";
 import {UserLinkModule} from "./user-link/user-link.module";
-import {CentralService} from "./shared/service/central.service";
+
+import {CoreModule} from "./core/core.module";
+import {FirebaseService} from "./core/firebase/firebase.service";
+import {MockdataService} from "./core/mockdata/mockdata.service";
+import {ContentLoadService} from "./core/central-services/content-load.service";
+import {CentralService} from "./core/central-services/central.service";
+import {ConfigService} from "./core/config/config.service";
 
 @NgModule({
   declarations: [
@@ -33,6 +33,10 @@ import {CentralService} from "./shared/service/central.service";
   ],
   imports: [
     BrowserModule,
+
+    CoreModule,
+    // CoreModule.forRoot({userName: 'Miss Marple'}),
+
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -48,7 +52,9 @@ import {CentralService} from "./shared/service/central.service";
     BrowserModule,
     FormsModule,
   ],
-  providers: [ProjectsService, ConfigService, ContentLoadService, ContentPathService, MockdataService, FirebaseService, CentralService],
+  providers: [ConfigService,
+              MockdataService,
+              FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
