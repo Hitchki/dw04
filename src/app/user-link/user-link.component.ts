@@ -2,7 +2,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {CanComponentDeactivate} from "../junk_old_shared/service/can-deactivate-guard.service";
+// import {CanComponentDeactivate} from "../junk_old_shared/service/can-deactivate-guard.service";
 import {ContentComponent} from "../content/content.component";
 import {ContentLoadService} from "../core/central-services/content-load.service";
 import {CentralService} from "../core/central-services/central.service";
@@ -12,7 +12,8 @@ import {CentralService} from "../core/central-services/central.service";
   templateUrl: './user-link.component.html',
   styleUrls: ['./user-link.component.css'],
 })
-export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDeactivate {
+export class UserLinkComponent implements OnInit, AfterViewInit {
+  // export class UserLinkComponent implements OnInit, AfterViewInit, CanComponentDeactivate {
   @ViewChild(ContentComponent) private contentComponent: ContentComponent
 
   private userId: string;
