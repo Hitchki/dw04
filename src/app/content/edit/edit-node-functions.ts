@@ -1,21 +1,22 @@
+/// Attention: Being a class EditNodeFunctions is not part of the module!
 export class EditNodeFunctions {
   constructor() {
   }
 
-  insertNode(editNode) {
+  onInsertNode(editNode) {
     console.log('onInsertNode', editNode);
     let newNodeText = prompt('insert new node');
     let newNode = {"text": newNodeText};
     editNode.dwNodes.splice(editNode.index, 0, newNode);
   }
 
-  deleteNode(editNode) {
+  onDeleteNode(editNode) {
     // alert('onDeleteNode');
     let countDelete: number = 1;
     editNode.dwNodes.splice(editNode.index, countDelete);
   }
 
-  addNodeLevel(editNode) {
+  onAddNodeLevel(editNode) {
     // alert('onAddNodeLevel');
     console.log('edit-element-onAddNodeLevel', editNode);
     let con = 'meta-normtext';
