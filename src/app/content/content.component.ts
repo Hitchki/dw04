@@ -73,7 +73,7 @@ export class ContentComponent implements OnInit {
           } else {
             /// falls nur ein einzelner normtextnode => erster mainContent, => comments auf infoContent
             this.mainContent = pNode1.dwNodes;
-            // this.infoContent = pNode1.dwNodes;
+            // this.infoContent = undefined;
           }
         }
       }

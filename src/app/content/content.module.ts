@@ -24,6 +24,5 @@ import {EditModule} from "./edit/edit.module";
     ContentComponent
   ],
   declarations: [ContentComponent],
-  // providers: [ProjectsService]
 })
 export class ContentModule { }

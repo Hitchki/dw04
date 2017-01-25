@@ -25,11 +25,13 @@ import {MockdataService} from "./core/mockdata/mockdata.service";
 import {ContentLoadService} from "./core/central-services/content-load.service";
 import {CentralService} from "./core/central-services/central.service";
 import {ConfigService} from "./core/config/config.service";
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
