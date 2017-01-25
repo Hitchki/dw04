@@ -1,6 +1,15 @@
-<div class="flex-container">
-  <dw-nav-content [projects]="projects" [pathNode]="navPathNode"></dw-nav-content>
-  <dw-main-content [dwNodes]="mainContent"></dw-main-content>
-  <dw-info-content [dwNodes]="infoContent"></dw-info-content>
-</div>
+<!--<div class="flex-container">-->
+  <!--<dw-nav-content [projects]="projects" [pathNode]="navPathNode"></dw-nav-content>-->
+  <!--<dw-main-content [dwNodes]="mainContent"></dw-main-content>-->
+  <!--<dw-info-content [dwNodes]="infoContent"></dw-info-content>-->
+<!--</div>-->
 
+<div class="flex-container">
+  <nav>
+    <dw-nav-content [projects]="projects" [pathNode]="navPathNode"></dw-nav-content>
+  </nav>
+  <main>
+    <dw-main-content [dwNodes]="mainContent"></dw-main-content>
+    <dw-info-content [dwNodes]="infoContent"></dw-info-content>
+  </main>
+</div>
