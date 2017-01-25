@@ -1,42 +1,48 @@
-<header></header>
+<header>Denkwelten</header>
 
-<a routerLink="/user-link/user-franz-projects-1-subprojects-1">biglink</a>
+<main>
+  <div dwSelected="">
+    <a routerLink="/user-link/user-franz-projects-1-subprojects-1">biglink</a>
 
-<a [routerLink]="['/user-link']" [queryParams]="{url: 'projects/1/subprojects/7', projects:1, subprojects:2}" fragment="projects/1/subprojects/7">
-  link to user component
-</a>
+    <a [routerLink]="['/user-link']" [queryParams]="{url: 'projects/1/subprojects/7', projects:1, subprojects:2}" fragment="projects/1/subprojects/7">
+      link to user component
+    </a>
 
-<a routerLink="/simulation">simulation</a>
+    <a routerLink="/simulation">simulation</a>
 
-<a href="http://orf.at/">http://orf.at/</a>
+    <a href="http://orf.at/">http://orf.at/</a>
 
-<div>
-  <label for="userId">userId</label>
-  <input type="text" [(ngModel)]="userId" id="userId">
-  <label for="userIdToSave">userIdToSave</label>
-  <input type="text" [(ngModel)]="userIdToSave" value="tmp" id="userIdToSave">
-  <button (click)="save(userIdToSave)">Save</button>
-</div>
-
-
-<div>
-  <dw-content></dw-content>
-</div>
-<router-outlet></router-outlet>
+    <div>
+      <label for="userId">userId</label>
+      <input type="text" [(ngModel)]="userId" id="userId">
+      <label for="userIdToSave">userIdToSave</label>
+      <input type="text" [(ngModel)]="userIdToSave" value="tmp" id="userIdToSave">
+      <button (click)="save(userIdToSave)">Save</button>
+    </div>
+  </div>
 
 
-<div>
-  <input type="text" [(ngModel)]="nodeByUrl">
-  <button (click)="testLoadNodeByUrl()">testLoadNodeByUrl</button>
-  <input type="text" [(ngModel)]="nodesByUrl">
-  <button (click)="testLoadNodesByUrl()">testLoadNodesByUrl</button>
-</div>
 
-<input type="text" [(ngModel)]="playGroundParam1">
-<button (click)="playGround1()">playGround1</button>
+  <div>
+    <dw-content></dw-content>
+  </div>
+  <router-outlet></router-outlet>
 
-<div><button (click)="testTest()">testTest</button>
-</div>
+
+  <div>
+    <input type="text" [(ngModel)]="nodeByUrl">
+    <button (click)="testLoadNodeByUrl()">testLoadNodeByUrl</button>
+    <input type="text" [(ngModel)]="nodesByUrl">
+    <button (click)="testLoadNodesByUrl()">testLoadNodesByUrl</button>
+  </div>
+
+  <input type="text" [(ngModel)]="playGroundParam1">
+  <button (click)="playGround1()">playGround1</button>
+
+  <div><button (click)="testTest()">testTest</button>
+  </div>
+</main>
+
 
 <!--projects: {{projects | json}}-->
 
