@@ -7,7 +7,7 @@ import {SearchtreeModule} from "../element/searchtree/searchtree.module";
 
 @NgModule({
   imports: [
-    CommonModule,
+    // CommonModule,
     EditModule,
     NormtextModule,
     SearchtreeModule

@@ -7,6 +7,9 @@ import {ContentComponent} from "../content/content.component";
 import {ContentLoadService} from "../core/central-services/content-load.service";
 import {CentralService} from "../core/central-services/central.service";
 
+import {SelectedDirective} from "../shared/selected/selected.directive";
+
+
 @Component({
   selector: 'app-user-link',
   templateUrl: './user-link.component.html',

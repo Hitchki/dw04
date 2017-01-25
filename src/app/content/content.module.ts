@@ -8,17 +8,21 @@ import {ContentRoutingModule} from "./content-routing.module";
 import {MainContentModule} from "./main-content/main-content.module";
 import {InfoContentModule} from "./info-content/info-content.module";
 import {EditModule} from "./edit/edit.module";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
     // RouterModule.forChild(routes1),
-    CommonModule,
+    // CommonModule,
     ContentRoutingModule,
     FormsModule,
+
     NavContentModule,
     MainContentModule,
     InfoContentModule,
-    EditModule
+    EditModule,
+
+    SharedModule
   ],
   exports: [
     ContentComponent
