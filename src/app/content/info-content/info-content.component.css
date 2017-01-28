@@ -1,5 +1,13 @@
-.flex-item {
-  flex-grow: 1;
-  color: aqua;
-  border: 1px solid blueviolet;
-}
+/*.flex-item {*/
+  /*flex-grow: 1;*/
+  /*color: aqua;*/
+  /*border: 1px solid blueviolet;*/
+/*}*/
+
+/*dw-info-content {*/
+  /*!*background-color: aliceblue;*!*/
+  /*!*width: 50%;*!*/
+  /*!*flex-basis: auto;*!*/
+  /*flex-basis: 50%;*/
+  /*background-color: green;*/
+/*}*/

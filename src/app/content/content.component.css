@@ -11,4 +11,26 @@ nav {
 main {
   flex-basis: 70%;
   background-color: #eee;
+  position: relative;
+  /*display: inline-block;*/
 }
+
+#main, #main1, #main2 {
+  border: 2px solid green;
+  display: flex;
+}
+
+:host /deep/ dw-main-content {
+  flex-basis: 50%;
+  flex-grow: 1;
+  background-color: aquamarine;
+}
+
+:host /deep/ dw-info-content {
+  background-color: aliceblue;
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+
+
+
