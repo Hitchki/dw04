@@ -39,45 +39,72 @@ export class ContentComponent implements OnInit {
     )
   }
 
+  reducePathNodes(pathNodes):number {
+
+    // remove holes in pathNodes
+    pathNodes.filter(()=> true);
+
+    if (pathNodes.length === 0) {
+      return -1;
+    } else if (pathNodes.length === 1) {
+      return 0;
+    }
+
+    let tmp1 = pathNodes.reduceRight(
+      (i, currentValue, currentIndex, array) => {
+        if (currentValue !== undefined && array[currentIndex-1] !== undefined) {
+          return i ? i + 1 : 0;
+        } else {
+          return i;
+        }
+      } , undefined
+    );
+
+    console.log('tmp1', tmp1);
+
+  }
+
+  getStartContentIndex(pathNodes) {
+    if (pathNodes.length < 3) {
+      return -1;
+    } else {
+      return pathNodes.length - 2;
+    }
+  }
+
   main(pathNodes) {
 
-    // this.projects = pathNodes[0].dwNodes;
-    // this.mainContent = pathNodes[2].dwNodes;
+    this.projects = pathNodes[0].dwNodes;
+    this.navPathNode = pathNodes[0];
+    this.mainContent = pathNodes[2].dwNodes;
+    this.infoContent = pathNodes[3].dwNodes;
+    let startContentIndex = this.getStartContentIndex(pathNodes);
 
     // pathNodes.forEach(
-    //   (pathNode: PathNode) => {
-    //     //console.table(dwNode);
-    //     if (pathNode.type === 'projects') {
-    //       this.projects = pathNode.dwNodes;
+    //   (pathNode: PathNode, i: number, pn: PathNodes) => {
+    //     let len = pn.length;
+    //     /// start with last index/node and goto first index/node
+    //     let pNode1 = pn[len-i-1];
+    //     // console.log('pn[len-i-1]', pNode1);
+    //     if (pNode1.type === 'projects') {
+    //       this.projects = pNode1.dwNodes;
+    //       this.navPathNode = pNode1;
+    //     } else if (pNode1.type === 'normtext') {
+    //       //todo2 >= correct?
+    //       let pNode2 = (len-i-2 >= 0) ? pn[len-i-2] : null;
+    //
+    //       if (pNode2.type === 'normtext') {
+    //         /// falls zwei normtextnodes hintereinander => erster mainContent, => zweiter infoContent
+    //         this.mainContent = pNode2.dwNodes;
+    //         this.infoContent = pNode1.dwNodes;
+    //       } else {
+    //         /// falls nur ein einzelner normtextnode => erster mainContent, => comments auf infoContent
+    //         this.mainContent = pNode1.dwNodes;
+    //         // this.infoContent = undefined;
+    //       }
     //     }
     //   }
     // );
-
-    pathNodes.forEach(
-      (pathNode: PathNode, i: number, pn: PathNodes) => {
-        let len = pn.length;
-        /// start with last index/node and goto first index/node
-        let pNode1 = pn[len-i-1];
-        // console.log('pn[len-i-1]', pNode1);
-        if (pNode1.type === 'projects') {
-          this.projects = pNode1.dwNodes;
-          this.navPathNode = pNode1;
-        } else if (pNode1.type === 'normtext') {
-          //todo2 >= correct?
-          let pNode2 = (len-i-2 >= 0) ? pn[len-i-2] : null;
-
-          if (pNode2.type === 'normtext') {
-            /// falls zwei normtextnodes hintereinander => erster mainContent, => zweiter infoContent
-            this.mainContent = pNode2.dwNodes;
-            this.infoContent = pNode1.dwNodes;
-          } else {
-            /// falls nur ein einzelner normtextnode => erster mainContent, => comments auf infoContent
-            this.mainContent = pNode1.dwNodes;
-            // this.infoContent = undefined;
-          }
-        }
-      }
-    );
   }
 
   test() {
