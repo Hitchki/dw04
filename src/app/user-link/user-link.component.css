@@ -12,6 +12,10 @@ header {
   margin: 50px 0 0 0;
 }
 
+.hidden {
+  display: none;
+}
+
 /*.header {*/
   /*height: 100px;*/
   /*width: 200px;*/

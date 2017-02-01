@@ -1,15 +1,19 @@
 .flex-container {
   display: flex;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 nav {
   flex-basis: 30%;
+  position: fixed;
   color: blueviolet;
+  top: 50px;
+  left: 0;
 }
 
 main {
   flex-basis: 70%;
+  margin-left: 30%;
   background-color: #eee;
   position: relative;
   /*display: inline-block;*/
