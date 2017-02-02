@@ -1,7 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router} from "@angular/router";
 import {CentralService} from "../../core/central-services/central.service";
-import {PathNode} from "../../core/central-services/path-node.interface";
+import {PathNode, PathNodes} from "../../core/central-services/path-node.interface";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'dw-nav-content',
@@ -9,8 +10,12 @@ import {PathNode} from "../../core/central-services/path-node.interface";
   styleUrls: ['./nav-content.component.css']
 })
 export class NavContentComponent implements OnInit {
-  @Input() projects: any;
+  // @Input() projects: any;
   @Input() pathNode: PathNode;
+  @Input() pathNodeIndex: number;
+  @Input() pathNodes: PathNodes;
+  // @Input() navPathNode$: Observable<number>;
+  private projects: any[];
 
   constructor(
     private router: Router,
@@ -19,7 +24,12 @@ export class NavContentComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.projects = this.pathNode.dwNodes;
   }
+
+  // ngAfterViewChecked() {
+  //   this.projects = this.pathNode.dwNodes;
+  // }
 
   insertNode(editNode) {
     console.debug('insertNode', editNode);

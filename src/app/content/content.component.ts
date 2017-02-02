@@ -4,6 +4,9 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 import {PathNode, PathNodes} from "../core/central-services/path-node.interface";
 import {CentralService} from "../core/central-services/central.service";
 
+// import {of} from "rxjs/add/observable/of";
+import {Observable} from "rxjs";
+
 @Component({
   selector: 'dw-content',
   templateUrl: './content.component.html',
@@ -20,6 +23,9 @@ export class ContentComponent implements OnInit {
   private projectUrl: string;
   private subProjectUrl: string;
   private pathNodes: PathNodes;
+  private navPathNodeIndex: number;
+  private navPathNodes: PathNodes;
+  // private navPathNode$: Observable<number>;
   // private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
 
   constructor(
@@ -74,8 +80,12 @@ export class ContentComponent implements OnInit {
 
   main(pathNodes) {
 
-    this.projects = pathNodes[0].dwNodes;
+    this.navPathNodeIndex = 0;
     this.navPathNode = pathNodes[0];
+    // this.navPathNode$ = Observable.of(1,2,3);
+    this.navPathNodes = pathNodes;
+
+    // this.projects = pathNodes[0].dwNodes;
     this.mainContent = pathNodes[2].dwNodes;
     this.infoContent = pathNodes[3].dwNodes;
     let startContentIndex = this.getStartContentIndex(pathNodes);
