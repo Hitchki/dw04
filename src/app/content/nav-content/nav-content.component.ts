@@ -16,6 +16,7 @@ export class NavContentComponent implements OnInit {
   @Input() pathNodes: PathNodes;
   @Input() pathNodeObs: Observable<any>;
   private projects: any[];
+  private isEditMode: boolean;
 
   constructor(
     private router: Router,
@@ -28,7 +29,8 @@ export class NavContentComponent implements OnInit {
     this.pathNodeObs.subscribe(
       pn => console.debug('nav-component pathNodeObs')
       // pn => console.info()
-    )
+    );
+    this.isEditMode = true;
   }
 
   ngAfterViewChecked() {

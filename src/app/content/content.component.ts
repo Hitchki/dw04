@@ -25,7 +25,8 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   private navPathNodeIndex: number;
   private navPathNodes: PathNodes;
-  private pathNodeObs: Observable<any>;
+
+  private navProps: Observable<any>;
 
   // private pathNodesSubject = new Subject<PathNodes>();
   // public pathNodes$ = this.pathNodesSubject.asObservable();
@@ -87,6 +88,8 @@ export class ContentComponent implements OnInit {
   }
 
   main(pathNodes) {
+
+    console.debug('pathNodes', pathNodes);
 
     this.navPathNodeIndex = 0;
     this.navPathNode = pathNodes[0];

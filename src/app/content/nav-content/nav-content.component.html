@@ -1,26 +1,42 @@
 <div class="flex-item">
   nav-component works!
-    <div *ngFor="let project of pathNode?.dwNodes; let i=index;" #item>
+    <div *ngFor="let project of pathNode?.dwNodes; let proindex=index;" #item>
       <!--<div *ngFor="let project of projects; let i=index;" #item>  -->
-      <span>{{project?.properties?.title}}</span>
-      <dw-edit
-        [editNode]="{node: project, index: i}"
-        (onInsertNode)="insertNode($event)"
-        (onDeleteNode)="deleteNode($event)"
-        (onAddNodeLevel)="addNodeLevel($event)"
-      >
-      </dw-edit>
+      <!--<div>-->
+        <!--proindex:{{proindex}}-&#45;&#45;project.selectedIndex:{{pathNode.selectedIndex}}-->
+      <!--</div>-->
 
-      <div *ngFor="let subproject of project?.subprojects; let si=index;" #subpro>
-        <!--<span>{{subproject | json}}</span>-->
-        <span (click)="onClick($event, subproject, si, item)">{{subproject?.properties?.title}}</span>
-        <!--<dw-edit-->
-          <!--[editNode]="{node: project, index: i}"-->
-          <!--(onInsertNode)="insertNode($event)"-->
-          <!--(onDeleteNode)="deleteNode($event)"-->
-          <!--(onAddNodeLevel)="addNodeLevel($event)"-->
-        <!--&gt;-->
-        <!--</dw-edit>-->
+
+      <span [class.selected]="proindex === pathNode.selectedIndex">
+        {{project?.properties?.title}}
+      </span>
+
+      <span *ngIf="isEditMode">
+        <dw-edit
+          [editNode]="{node: project, index: i}"
+          (onInsertNode)="insertNode($event)"
+          (onDeleteNode)="deleteNode($event)"
+          (onAddNodeLevel)="addNodeLevel($event)"
+        >
+        </dw-edit>
+      </span>
+
+      <div *ngFor="let subproject of project?.subprojects; let subindex=index;" #subpro>
+
+        <!--<div>-->
+          <!--subindex:{{subindex}}-&#45;&#45;subproject.selectedIndex:{{project.selectedIndex}}-->
+        <!--</div>-->
+
+        <span (click)="onClick($event, subproject, si, item)"
+              [class.selected]="subindex === pathNodes[1]?.selectedIndex">
+          {{subproject?.properties?.title}}
+        </span>
+
+        <div *ngIf="pathNodes[1]?.selectedIndex === subindex">
+          {{pathNodes[2]?.type}}--
+          {{subproject[pathNodes[2]?.type]}}
+        </div>
+
       </div>
 
     </div>
