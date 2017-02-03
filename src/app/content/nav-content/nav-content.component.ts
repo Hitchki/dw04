@@ -14,7 +14,7 @@ export class NavContentComponent implements OnInit {
   @Input() pathNode: PathNode;
   @Input() pathNodeIndex: number;
   @Input() pathNodes: PathNodes;
-  // @Input() navPathNode$: Observable<number>;
+  @Input() pathNodeObs: Observable<any>;
   private projects: any[];
 
   constructor(
@@ -25,11 +25,19 @@ export class NavContentComponent implements OnInit {
 
   ngOnInit() {
     // this.projects = this.pathNode.dwNodes;
+    this.pathNodeObs.subscribe(
+      pn => console.debug('nav-component pathNodeObs')
+      // pn => console.info()
+    )
   }
 
-  // ngAfterViewChecked() {
-  //   this.projects = this.pathNode.dwNodes;
-  // }
+  ngAfterViewChecked() {
+    // this.projects = this.pathNode.dwNodes;
+    // this.pathNodeObs.subscribe(
+    //   pn => alert('hier1')
+    //   // pn => console.info()
+    // )
+  }
 
   insertNode(editNode) {
     console.debug('insertNode', editNode);

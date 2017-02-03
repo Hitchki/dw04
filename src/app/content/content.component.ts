@@ -5,7 +5,7 @@ import {PathNode, PathNodes} from "../core/central-services/path-node.interface"
 import {CentralService} from "../core/central-services/central.service";
 
 // import {of} from "rxjs/add/observable/of";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'dw-content',
@@ -25,7 +25,11 @@ export class ContentComponent implements OnInit {
   private pathNodes: PathNodes;
   private navPathNodeIndex: number;
   private navPathNodes: PathNodes;
-  // private navPathNode$: Observable<number>;
+  private pathNodeObs: Observable<any>;
+
+  // private pathNodesSubject = new Subject<PathNodes>();
+  // public pathNodes$ = this.pathNodesSubject.asObservable();
+
   // private testUrl: string = 'http://localhost:4200/projects/1/subprojects/16';
 
   constructor(
@@ -36,10 +40,14 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     // this.test();
+    this.pathNodeObs = Observable.of(1,2,3);
     this.centralService.pathNodes$.subscribe(
       pathNodes => {
         this.pathNodes = pathNodes;
-        console.log('###this.pathNodes## contentComponent', this.pathNodes);
+        // console.log('###this.pathNodes## contentComponent', this.pathNodes);
+        // console.dir(this.pathNodes);
+        // console.dir(this.pathNodes[0]);
+
         this.main(this.pathNodes);
       }
     )
@@ -82,8 +90,8 @@ export class ContentComponent implements OnInit {
 
     this.navPathNodeIndex = 0;
     this.navPathNode = pathNodes[0];
-    // this.navPathNode$ = Observable.of(1,2,3);
     this.navPathNodes = pathNodes;
+
 
     // this.projects = pathNodes[0].dwNodes;
     this.mainContent = pathNodes[2].dwNodes;
