@@ -1,3 +1,4 @@
+///<reference path="../../../node_modules/rxjs/Subject.d.ts"/>
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Router, ActivatedRoute, Params} from "@angular/router";
 
@@ -26,7 +27,10 @@ export class ContentComponent implements OnInit {
   private navPathNodeIndex: number;
   private navPathNodes: PathNodes;
 
+  // private navProps: Observable<any>;
   private navProps: Observable<any>;
+  private mainProps: Observable<any>;
+
 
   // private pathNodesSubject = new Subject<PathNodes>();
   // public pathNodes$ = this.pathNodesSubject.asObservable();
@@ -41,7 +45,9 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
     // this.test();
-    this.pathNodeObs = Observable.of(1,2,3);
+    // this.navProps = Observable.of(1,2,3);
+
+    this.navProps = new Subject<any>();
     this.centralService.pathNodes$.subscribe(
       pathNodes => {
         this.pathNodes = pathNodes;
@@ -95,6 +101,7 @@ export class ContentComponent implements OnInit {
     this.navPathNode = pathNodes[0];
     this.navPathNodes = pathNodes;
 
+    this.navProps.subscribe()
 
     // this.projects = pathNodes[0].dwNodes;
     this.mainContent = pathNodes[2].dwNodes;
