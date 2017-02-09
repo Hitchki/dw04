@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Play3Service} from "../../core/central-services/play3.service";
 
 @Component({
   selector: 'app-play3',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Play3Component implements OnInit {
 
-  constructor() { }
+  constructor(
+    private play3Service: Play3Service
+  ) { }
 
   ngOnInit() {
+    // alert(this.play3Service.dwTest);
   }
 
 }

@@ -2,6 +2,7 @@ import {NgModule, Optional, SkipSelf} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CentralService} from "./central-services/central.service";
 import {ContentLoadService} from "./central-services/content-load.service";
+import {Play3Service} from "./central-services/play3.service";
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {ContentLoadService} from "./central-services/content-load.service";
   ],
   providers: [
     CentralService,
-    ContentLoadService
+    ContentLoadService,
+    Play3Service
   ]
 })
 export class CoreModule {
