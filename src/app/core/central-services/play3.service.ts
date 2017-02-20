@@ -57,7 +57,7 @@ export class Play3Service {
     console.log('pathRefOnce: ', pathRefOnce);
 
     let pathRefSnap;
-    pathRefs.forEach((pathRef, index)=>ref.once('value', snapshot => pathRefSnap[index] = snapshot);
+    pathRefs.forEach((pathRef, index)=>ref.once('value', snapshot => pathRefSnap[index] = snapshot));
     console.log('pathRefSnap: ', pathRefSnap);
 
     let pathRefVal = pathRefs.map((pathRef)=> {
