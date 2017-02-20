@@ -52,8 +52,24 @@ export class Play3Service {
     }
 
     console.log('pathRefs', pathRefs);
-    console.log('pathValues1', pathValues1);
-    console.log('pathValues', pathValues);
+
+    let pathRefOnce = pathRefs.map((pathRef)=>ref.once('value'));
+    console.log('pathRefOnce: ', pathRefOnce);
+
+    let pathRefSnap;
+    pathRefs.forEach((pathRef, index)=>ref.once('value', snapshot => pathRefSnap[index] = snapshot);
+    console.log('pathRefSnap: ', pathRefSnap);
+
+    let pathRefVal = pathRefs.map((pathRef)=> {
+      ref.once('value').then(snapshot => snapshot.val())
+      return
+    });
+    console.log('pathRefVal: ', pathRefVal);
+
+    // console.log('pathRefs', pathRefs);
+    //
+    // console.log('pathValues1', pathValues1);
+    // console.log('pathValues', pathValues);
   }
 
   test() {
