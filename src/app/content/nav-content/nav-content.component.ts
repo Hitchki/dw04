@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'dw-nav-content',
   templateUrl: './nav-content.component.html',
-  styleUrls: ['./nav-content.component.css']
+  styleUrls: ['./nav-content.component.scss']
 })
 export class NavContentComponent implements OnInit {
   // @Input() projects: any;
