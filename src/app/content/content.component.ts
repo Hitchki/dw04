@@ -55,12 +55,14 @@ export class ContentComponent implements OnInit {
     // this.test();
     // this.navProps = Observable.of(1,2,3);
 
+    this.store.dispatch(new LoadUserProjectsAction());
 
-    this.centralService.pathNodes$.subscribe(
-      pathNodes => this.store.dispatch(
-        new LoadUserProjectsAction(pathNodes)
-      )
-    );
+    // this.centralService.pathNodes$.subscribe(
+    //   pathNodes => this.store.dispatch(
+    //     new UserProjectsLoadedAction(pathNodes)
+    //     // new LoadUserProjectsAction(pathNodes)
+    //   )
+    // );
 
     this.navProps = new Subject<any>();
     this.centralService.pathNodes$.subscribe(

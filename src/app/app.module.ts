@@ -28,15 +28,21 @@ import {ConfigService} from "./core/config/config.service";
 import { CommentComponent } from './comment/comment.component';
 import {StoreModule, Action} from '@ngrx/store'
 import {INITIAL_APPLICATION_STATE, ApplicationState} from './shared/store/application-state'
-import {LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction} from './shared/store/actions'
+import {
+  LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction, UserProjectsLoadedAction,
+  USER_PROJECTS_LOADED_ACTION
+} from './shared/store/actions'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
+import {EffectsModule} from '@ngrx/effects'
+import {LoadProjectsEffectService} from './shared/store/effects/load-projects-effect.service'
 
 function storeReducer(
   state: ApplicationState = INITIAL_APPLICATION_STATE,
   action: Action): ApplicationState  {
 
   switch (action.type) {
-    case LOAD_USER_PROJECTS_ACTION:
+    // case LOAD_USER_PROJECTS_ACTION:
+    case USER_PROJECTS_LOADED_ACTION:
       return handleLoadUserProjectsAction(state, action);
 
     default:
@@ -45,7 +51,7 @@ function storeReducer(
 }
 
 function handleLoadUserProjectsAction(state: ApplicationState,
-                                action: LoadUserProjectsAction): ApplicationState {
+                                action: UserProjectsLoadedAction): ApplicationState {
   const projectData = action.payload;
 
   console.log('porDataaaaaaaa: ', projectData);
@@ -79,7 +85,8 @@ function handleLoadUserProjectsAction(state: ApplicationState,
     SimulationModule,
     AppRoutingModule,
     StoreModule.provideStore( storeReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(LoadProjectsEffectService)
   ],
   exports: [
     BrowserModule,

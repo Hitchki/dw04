@@ -11,16 +11,16 @@ export const LOAD_USER_THREADS_ACTION = 'LOAD_USER_THREADS_ACTION';
 // export const NEW_MESSAGES_RECEIVED_ACTION = 'NEW_MESSAGES_RECEIVED_ACTION';
 
 export const LOAD_USER_PROJECTS_ACTION = 'LOAD_USER_PROJECTS_ACTION';
+export const USER_PROJECTS_LOADED_ACTION = 'USER_PROJECTS_LOADED_ACTION';
 
 
-export class LoadUserThreadsAction implements  Action {
+export class UserProjectsLoadedAction implements  Action {
 
-    readonly type = LOAD_USER_THREADS_ACTION;
+  readonly type = USER_PROJECTS_LOADED_ACTION;
 
-    constructor(public payload:number) {
+  constructor(public payload?:any) {
 
-    }
-
+  }
 }
 
 export class LoadUserProjectsAction implements  Action {
@@ -30,8 +30,18 @@ export class LoadUserProjectsAction implements  Action {
   constructor(public payload?:any) {
 
   }
-
 }
+
+
+// export class LoadUserThreadsAction implements  Action {
+//
+//   readonly type = LOAD_USER_THREADS_ACTION;
+//
+//   constructor(public payload:number) {
+//
+//   }
+//
+// }
 
 // export class UserThreadsLoadedAction implements Action {
 //
