@@ -29,9 +29,11 @@ import { CommentComponent } from './comment/comment.component';
 import {StoreModule, Action} from '@ngrx/store'
 import {INITIAL_APPLICATION_STATE, ApplicationState} from './shared/store/application-state'
 import {LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction} from './shared/store/actions'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 
-function storeReducer(state: ApplicationState,
-                      action: Action): ApplicationState  {
+function storeReducer(
+  state: ApplicationState = INITIAL_APPLICATION_STATE,
+  action: Action): ApplicationState  {
 
   switch (action.type) {
     case LOAD_USER_PROJECTS_ACTION:
@@ -76,7 +78,8 @@ function handleLoadUserProjectsAction(state: ApplicationState,
     PlaygroundModule,
     SimulationModule,
     AppRoutingModule,
-    StoreModule.provideStore( storeReducer, INITIAL_APPLICATION_STATE)
+    StoreModule.provideStore( storeReducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   exports: [
     BrowserModule,
