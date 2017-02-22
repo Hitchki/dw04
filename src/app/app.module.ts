@@ -26,6 +26,33 @@ import {ContentLoadService} from "./core/central-services/content-load.service";
 import {CentralService} from "./core/central-services/central.service";
 import {ConfigService} from "./core/config/config.service";
 import { CommentComponent } from './comment/comment.component';
+import {StoreModule, Action} from '@ngrx/store'
+import {INITIAL_APPLICATION_STATE, ApplicationState} from './shared/store/application-state'
+import {LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction} from './shared/store/actions'
+
+function storeReducer(state: ApplicationState,
+                      action: Action): ApplicationState  {
+
+  switch (action.type) {
+    case LOAD_USER_PROJECTS_ACTION:
+      return handleLoadUserProjectsAction(state, action);
+
+    default:
+      return state;
+  }
+}
+
+function handleLoadUserProjectsAction(state: ApplicationState,
+                                action: LoadUserProjectsAction): ApplicationState {
+  const projectData = action.payload;
+
+  console.log('porDataaaaaaaa: ', projectData);
+
+  const newState: ApplicationState = Object.assign({}, state);
+  newState.storeData = {projects: projectData};
+  // alert('projects');
+  return newState;
+}
 
 @NgModule({
   declarations: [
@@ -49,6 +76,7 @@ import { CommentComponent } from './comment/comment.component';
     PlaygroundModule,
     SimulationModule,
     AppRoutingModule,
+    StoreModule.provideStore( storeReducer, INITIAL_APPLICATION_STATE)
   ],
   exports: [
     BrowserModule,

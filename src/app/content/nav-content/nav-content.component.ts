@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import {CentralService} from "../../core/central-services/central.service";
 import {PathNode, PathNodes} from "../../core/central-services/path-node.interface";
 import {Observable} from "rxjs";
+import {Store} from '@ngrx/store'
+import {ApplicationState} from '../../shared/store/application-state'
 
 @Component({
   selector: 'dw-nav-content',
@@ -20,11 +22,18 @@ export class NavContentComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private centralServie: CentralService
+    private centralServie: CentralService,
+    private store: Store<ApplicationState>
   ) {
+    store.subscribe(
+      state => console.log('navContentComponent: ', state)
+    )
   }
 
   ngOnInit() {
+
+
+
     // this.projects = this.pathNode.dwNodes;
     this.pathNodeObs.subscribe(
       pn => console.debug('nav-component pathNodeObs')

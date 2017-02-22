@@ -7,6 +7,9 @@ import {CentralService} from "../core/central-services/central.service";
 
 // import {of} from "rxjs/add/observable/of";
 import {Observable, Subject} from "rxjs";
+import {Store} from '@ngrx/store'
+import {ApplicationState} from '../shared/store/application-state'
+import {LoadUserProjectsAction} from '../shared/store/actions'
 
 @Component({
   selector: 'dw-content',
@@ -40,12 +43,24 @@ export class ContentComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private centralService: CentralService
-  ) { }
+    private centralService: CentralService,
+    private store: Store<ApplicationState>
+  ) {
+    store.subscribe(
+      console.log
+    )
+  }
 
   ngOnInit() {
     // this.test();
     // this.navProps = Observable.of(1,2,3);
+
+
+    this.centralService.pathNodes$.subscribe(
+      pathNodes => this.store.dispatch(
+        new LoadUserProjectsAction(pathNodes)
+      )
+    );
 
     this.navProps = new Subject<any>();
     this.centralService.pathNodes$.subscribe(

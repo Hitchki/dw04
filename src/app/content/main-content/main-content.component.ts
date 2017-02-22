@@ -1,4 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ApplicationState} from '../../shared/store/application-state'
+import {Store} from '@ngrx/store'
 
 @Component({
   selector: 'dw-main-content',
@@ -8,7 +10,13 @@ import {Component, OnInit, Input} from '@angular/core';
 export class MainContentComponent implements OnInit {
   @Input() dwNodes: any;
 
-  constructor() { }
+  constructor(
+    private store: Store<ApplicationState>
+  ) {
+    store.subscribe(
+      state => console.log('MainContentComponent: ', state)
+    )
+  }
 
   ngOnInit() {
   }
