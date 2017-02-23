@@ -26,7 +26,7 @@ import {ContentLoadService} from "./core/central-services/content-load.service";
 import {CentralService} from "./core/central-services/central.service";
 import {ConfigService} from "./core/config/config.service";
 import { CommentComponent } from './comment/comment.component';
-import {StoreModule, Action} from '@ngrx/store'
+import {StoreModule, Action, combineReducers} from '@ngrx/store'
 import {INITIAL_APPLICATION_STATE, ApplicationState} from './shared/store/application-state'
 import {
   LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction, UserProjectsLoadedAction,
@@ -38,38 +38,7 @@ import {LoadProjectsEffectService} from './shared/store/effects/load-projects-ef
 import {StoreData} from './shared/store/store-data'
 import {UiState} from './shared/store/ui-state'
 import {uiState} from './shared/store/reducers/uiStateReducer'
-
-function storeReducer(
-  state: ApplicationState = INITIAL_APPLICATION_STATE,
-  action: Action): ApplicationState  {
-
-  return {
-    uiState: uiState(state.uiState, action),
-    storeData: storeDataReducer(state.storeData, action)
-  }
-}
-
-function storeDataReducer(state, action) : StoreData {
-  switch (action.type) {
-    case USER_PROJECTS_LOADED_ACTION:
-      return handleLoadUserProjectsAction(state, action);
-
-    default:
-      return state;
-  }
-}
-
-
-function handleLoadUserProjectsAction(
-  state: ApplicationState,
-  action: UserProjectsLoadedAction): StoreData {
-
-  const projectData = action.payload;
-  // const newState: ApplicationState = Object.assign({}, state);
-  return {projects: projectData};
-  // alert('projects');
-  // return newState;
-}
+import {storeData} from './shared/store/reducers/storeDataReducer'
 
 @NgModule({
   declarations: [
@@ -93,7 +62,8 @@ function handleLoadUserProjectsAction(
     PlaygroundModule,
     SimulationModule,
     AppRoutingModule,
-    StoreModule.provideStore( storeReducer),
+    //ES6 abbreviated syntax
+    StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(LoadProjectsEffectService)
   ],
