@@ -15,7 +15,8 @@ export interface StoreData {
 
 export const INITIAL_STORE_DATA: StoreData = {
 
-  projects: 'abc'
+  projects: {}
+  // projects: 'abc'
   // threads: {},
     // messages: {},
     // participants: {}
