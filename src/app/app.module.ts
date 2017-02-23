@@ -37,20 +37,15 @@ import {EffectsModule} from '@ngrx/effects'
 import {LoadProjectsEffectService} from './shared/store/effects/load-projects-effect.service'
 import {StoreData} from './shared/store/store-data'
 import {UiState} from './shared/store/ui-state'
+import {uiState} from './shared/store/reducers/uiStateReducer'
 
 function storeReducer(
   state: ApplicationState = INITIAL_APPLICATION_STATE,
   action: Action): ApplicationState  {
 
   return {
-    uiState: uiStateReducer(state.uiState, action),
+    uiState: uiState(state.uiState, action),
     storeData: storeDataReducer(state.storeData, action)
-  }
-}
-
-function uiStateReducer(state, action) : UiState {
-  return {
-    userId: 1,
   }
 }
 
