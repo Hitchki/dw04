@@ -15,14 +15,53 @@ export class Play3Service {
     private firebaseService: FirebaseService,
     @Inject(FirebaseRef) dbRef
   ) {
+
+
+    // this.test();
+    // this.test1(dbRef);
+    this.firebaseAuthTests(dbRef)
+  }
+
+
+
+  firebaseAuthTests (dbRef) {
+    this.anonymousAuthentication(dbRef);
+  }
+
+
+  anonymousAuthentication(dbRef)  {
+    this.dbRef = dbRef.database().ref();
+
+    // this.dbRef.o
+    // debugger;
+
+    // this.dbRef = new Firebase(ref);
+      this.dbRef.onAuth(function(authData) {
+      if (!authData) {
+
+      } else {
+        console.log('user has been authenticated: ', authData);
+      }
+    });
+
+    this.dbRef.authAnonymously(function (err, authData) {
+      console.log('anonymoulsy logged out: ', authData);
+    });
+  }
+
+
+
+
+
+
+
+
+
+  test1(dbRef) {
+
     this.dwTest = "funzt";
     this.dbRef = dbRef.database().ref();
 
-    // this.test();
-    this.test1();
-  }
-
-  test1() {
     // const testKey = this.dbRef.child('test2');
     const testKey = this.dbRef;
 
