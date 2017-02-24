@@ -39,6 +39,10 @@ import {StoreData} from './shared/store/store-data'
 import {UiState} from './shared/store/ui-state'
 import {uiState} from './shared/store/reducers/uiStateReducer'
 import {storeData} from './shared/store/reducers/storeDataReducer'
+import {compose} from '@ngrx/core'
+import {rootReducer} from './shared/store/reducers/rootReducer'
+
+
 
 @NgModule({
   declarations: [
@@ -48,9 +52,10 @@ import {storeData} from './shared/store/reducers/storeDataReducer'
   ],
   imports: [
     BrowserModule,
-
     CoreModule,
     // CoreModule.forRoot({userName: 'Miss Marple'}),
+
+    StoreModule.provideStore(rootReducer),
 
     FormsModule,
     HttpModule,
@@ -63,7 +68,7 @@ import {storeData} from './shared/store/reducers/storeDataReducer'
     SimulationModule,
     AppRoutingModule,
     //ES6 abbreviated syntax
-    StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
+    StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(LoadProjectsEffectService)
   ],
