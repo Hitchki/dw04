@@ -19,9 +19,14 @@ export class Play3Service {
 
     // this.test();
     // this.test1(dbRef);
-    this.firebaseAuthTests(dbRef)
+    // this.firebaseAuthTests(dbRef)
+    this.objectBindingTest();
   }
 
+
+  objectBindingTest() {
+
+  }
 
 
   firebaseAuthTests (dbRef) {
