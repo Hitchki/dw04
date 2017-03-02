@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CentralService} from '../../../core/central-services/central.service'
+import {CentralService} from '../../core/central-services/central.service'
 import {Actions, Effect} from '@ngrx/effects'
 import {Observable} from 'rxjs'
 import {LOAD_USER_PROJECTS_ACTION, UserProjectsLoadedAction} from '../actions'

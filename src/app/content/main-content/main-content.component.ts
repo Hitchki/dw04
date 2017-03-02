@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {ApplicationState} from '../../shared/store/application-state'
+import {ApplicationState} from '../../store/application-state'
 import {Store} from '@ngrx/store'
 
 @Component({

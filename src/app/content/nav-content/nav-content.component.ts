@@ -4,7 +4,7 @@ import {CentralService} from "../../core/central-services/central.service";
 import {PathNode, PathNodes} from "../../core/central-services/path-node.interface";
 import {Observable} from "rxjs";
 import {Store} from '@ngrx/store'
-import {ApplicationState} from '../../shared/store/application-state'
+import {ApplicationState} from '../../store/application-state'
 
 @Component({
   selector: 'dw-nav-content',

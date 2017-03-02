@@ -27,20 +27,20 @@ import {CentralService} from "./core/central-services/central.service";
 import {ConfigService} from "./core/config/config.service";
 import { CommentComponent } from './comment/comment.component';
 import {StoreModule, Action, combineReducers} from '@ngrx/store'
-import {INITIAL_APPLICATION_STATE, ApplicationState} from './shared/store/application-state'
+import {INITIAL_APPLICATION_STATE, ApplicationState} from './store/application-state'
 import {
   LOAD_USER_PROJECTS_ACTION, LoadUserProjectsAction, UserProjectsLoadedAction,
   USER_PROJECTS_LOADED_ACTION
-} from './shared/store/actions'
+} from './store/actions'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {EffectsModule} from '@ngrx/effects'
-import {LoadProjectsEffectService} from './shared/store/effects/load-projects-effect.service'
-import {StoreData} from './shared/store/store-data'
-import {UiState} from './shared/store/ui-state'
-import {uiState} from './shared/store/reducers/uiStateReducer'
-import {storeData} from './shared/store/reducers/storeDataReducer'
+import {LoadProjectsEffectService} from './store/effects/load-projects-effect.service'
+import {StoreData} from './store/store-data'
+import {UiState} from './store/ui-state'
+import {uiState} from './store/reducers/uiStateReducer'
+import {storeData} from './store/reducers/storeDataReducer'
 import {compose} from '@ngrx/core'
-import {rootReducer} from './shared/store/reducers/rootReducer'
+import {rootReducer} from './store/reducers/rootReducer'
 
 
 

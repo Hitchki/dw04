@@ -8,8 +8,8 @@ import {CentralService} from "../core/central-services/central.service";
 // import {of} from "rxjs/add/observable/of";
 import {Observable, Subject} from "rxjs";
 import {Store} from '@ngrx/store'
-import {ApplicationState} from '../shared/store/application-state'
-import {LoadUserProjectsAction} from '../shared/store/actions'
+import {ApplicationState} from '../store/application-state'
+import {LoadUserProjectsAction} from '../store/actions'
 
 @Component({
   selector: 'dw-content',
