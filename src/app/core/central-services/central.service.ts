@@ -56,6 +56,7 @@ export class CentralService {
 
     this.buildFragmentsForPathNodes(pathNodes1);
     // console.log('this.pathNodesSubject.next', pathNodes1);
+    // debugger;
     this.pathNodesSubject.next(pathNodes1);
     return pathNodes1;
   }

@@ -13,11 +13,12 @@
 
 <div class="flex-container">
   <nav>
-    <dw-nav compInput="franz"></dw-nav>
+    <!--compVM {{compVM|async}}-->
+    <dw-nav></dw-nav>
   </nav>
   <main>
     <div id="main1">
-      <dw-main></dw-main>
+      <dw-main [compVM]="compVM"></dw-main>
       <!--<dw-main [dwNodes]="mainContent"></dw-main>-->
     </div>
   </main>

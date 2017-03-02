@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {CompVM} from '../content.interfaces'
 
 @Component({
   selector: 'dw-main',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  @Input() compVM: any;
+
   constructor() { }
 
   ngOnInit() {
+    // console.log('compVM: ', this.compVM);
   }
 
 }

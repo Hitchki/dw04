@@ -10,6 +10,7 @@ import {Observable, Subject} from "rxjs";
 import {Store} from '@ngrx/store'
 import {ApplicationState} from '../store/application-state'
 import {LoadUserProjectsAction} from '../store/actions'
+import {CompVM} from './content.interfaces'
 
 @Component({
   selector: 'dw-content',
@@ -34,6 +35,10 @@ export class ContentComponent implements OnInit {
   private navProps: Observable<any>;
   private mainProps: Observable<any>;
 
+  // private navVM: CompVM;
+
+  private mainVM: any;
+  private compVM: any;
 
   // private pathNodesSubject = new Subject<PathNodes>();
   // public pathNodes$ = this.pathNodesSubject.asObservable();
@@ -55,7 +60,12 @@ export class ContentComponent implements OnInit {
     // this.test();
     // this.navProps = Observable.of(1,2,3);
 
-    this.store.dispatch(new LoadUserProjectsAction());
+    this.compVM = 'dummyData';
+    // this.mainVM = 'dummyData';
+
+    // this.store.dispatch(new LoadUserProjectsAction());
+
+    // const dummyData =   { pathData: { selectedPathNodeIndex: 12 } };
 
 
     // this.centralService.pathNodes$.subscribe(
@@ -65,7 +75,7 @@ export class ContentComponent implements OnInit {
     //   )
     // );
 
-    this.navProps = new Subject<any>();
+    // this.navProps = new Subject<any>();
     this.centralService.pathNodes$.subscribe(
       pathNodes => {
         this.pathNodes = pathNodes;
@@ -78,38 +88,38 @@ export class ContentComponent implements OnInit {
     )
   }
 
-  reducePathNodes(pathNodes):number {
+  // reducePathNodes(pathNodes):number {
+  //
+  //   // remove holes in pathNodes
+  //   pathNodes.filter(()=> true);
+  //
+  //   if (pathNodes.length === 0) {
+  //     return -1;
+  //   } else if (pathNodes.length === 1) {
+  //     return 0;
+  //   }
+  //
+  //   let tmp1 = pathNodes.reduceRight(
+  //     (i, currentValue, currentIndex, array) => {
+  //       if (currentValue !== undefined && array[currentIndex-1] !== undefined) {
+  //         return i ? i + 1 : 0;
+  //       } else {
+  //         return i;
+  //       }
+  //     } , undefined
+  //   );
+  //
+  //   console.log('tmp1', tmp1);
+  //
+  // }
 
-    // remove holes in pathNodes
-    pathNodes.filter(()=> true);
-
-    if (pathNodes.length === 0) {
-      return -1;
-    } else if (pathNodes.length === 1) {
-      return 0;
-    }
-
-    let tmp1 = pathNodes.reduceRight(
-      (i, currentValue, currentIndex, array) => {
-        if (currentValue !== undefined && array[currentIndex-1] !== undefined) {
-          return i ? i + 1 : 0;
-        } else {
-          return i;
-        }
-      } , undefined
-    );
-
-    console.log('tmp1', tmp1);
-
-  }
-
-  getStartContentIndex(pathNodes) {
-    if (pathNodes.length < 3) {
-      return -1;
-    } else {
-      return pathNodes.length - 2;
-    }
-  }
+  // getStartContentIndex(pathNodes) {
+  //   if (pathNodes.length < 3) {
+  //     return -1;
+  //   } else {
+  //     return pathNodes.length - 2;
+  //   }
+  // }
 
   main(pathNodes) {
 
@@ -119,38 +129,13 @@ export class ContentComponent implements OnInit {
     this.navPathNode = pathNodes[0];
     this.navPathNodes = pathNodes;
 
-    this.navProps.subscribe()
+    // this.navProps.subscribe()
 
-    // this.projects = pathNodes[0].dwNodes;
     this.mainContent = pathNodes[2].dwNodes;
     this.infoContent = pathNodes[3].dwNodes;
-    let startContentIndex = this.getStartContentIndex(pathNodes);
+    // let startContentIndex = this.getStartContentIndex(pathNodes);
+    // throw new Error('Whoops!');
 
-    // pathNodes.forEach(
-    //   (pathNode: PathNode, i: number, pn: PathNodes) => {
-    //     let len = pn.length;
-    //     /// start with last index/node and goto first index/node
-    //     let pNode1 = pn[len-i-1];
-    //     // console.log('pn[len-i-1]', pNode1);
-    //     if (pNode1.type === 'projects') {
-    //       this.projects = pNode1.dwNodes;
-    //       this.navPathNode = pNode1;
-    //     } else if (pNode1.type === 'normtext') {
-    //       //todo2 >= correct?
-    //       let pNode2 = (len-i-2 >= 0) ? pn[len-i-2] : null;
-    //
-    //       if (pNode2.type === 'normtext') {
-    //         /// falls zwei normtextnodes hintereinander => erster mainContent, => zweiter infoContent
-    //         this.mainContent = pNode2.dwNodes;
-    //         this.infoContent = pNode1.dwNodes;
-    //       } else {
-    //         /// falls nur ein einzelner normtextnode => erster mainContent, => comments auf infoContent
-    //         this.mainContent = pNode1.dwNodes;
-    //         // this.infoContent = undefined;
-    //       }
-    //     }
-    //   }
-    // );
   }
 
   test() {

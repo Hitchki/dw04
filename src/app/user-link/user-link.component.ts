@@ -43,6 +43,7 @@ export class UserLinkComponent implements OnInit, AfterViewInit {
     // .do(console.log.bind(this, 'fragment'))
       .subscribe(
         fragment => {
+
           // this.userId = fragment.match(/^(.+?)\//g)[0];
           let userId = fragment.slice(0, fragment.indexOf('/'));
           this.fragment = fragment.replace(/^.+?\//,'');
