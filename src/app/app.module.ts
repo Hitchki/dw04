@@ -67,7 +67,9 @@ import {rootReducer} from './store/reducers/rootReducer'
     SimulationModule,
     AppRoutingModule,
     //ES6 abbreviated syntax
-    StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
+    // StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
+    StoreModule.provideStore(combineReducers({uiState, storeData}), INITIAL_APPLICATION_STATE),
+
     EffectsModule.run(LoadProjectsEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
