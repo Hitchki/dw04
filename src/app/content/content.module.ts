@@ -9,6 +9,8 @@ import {MainContentModule} from "./main-content/main-content.module";
 import {InfoContentModule} from "./info-content/info-content.module";
 import {EditModule} from "./edit/edit.module";
 import {SharedModule} from "../shared/shared.module";
+import { NavComponent } from './nav/nav.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,6 @@ import {SharedModule} from "../shared/shared.module";
   exports: [
     ContentComponent
   ],
-  declarations: [ContentComponent],
+  declarations: [ContentComponent, NavComponent, MainComponent],
 })
 export class ContentModule { }

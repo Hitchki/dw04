@@ -1,4 +1,11 @@
+import {CompInput} from '../content/content.interfaces'
 
+export interface ComponentStates {
+  userId:number;
+  // currentThreadId: number;
+  navCompVM: CompInput;
+  mainCompVM: CompInput;
+}
 
 export interface UiState {
     userId:number;

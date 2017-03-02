@@ -1,17 +1,24 @@
 <!--<div class="flex-container">-->
-  <!--<dw-nav-content [projects]="projects" [pathNode]="navPathNode"></dw-nav-content>-->
-  <!--<dw-main-content [dwNodes]="mainContent"></dw-main-content>-->
-  <!--<dw-info-content [dwNodes]="infoContent"></dw-info-content>-->
+  <!--<nav>-->
+    <!--<dw-nav-content [pathNodeObs]="navProps" [pathNode]="navPathNode" [pathNodeIndex]="navPathNodeIndex" [pathNodes]="navPathNodes" ></dw-nav-content>-->
+  <!--</nav>-->
+  <!--<main>-->
+    <!--<div id="main1">-->
+      <!--<dw-main-content [dwNodes]="mainContent"></dw-main-content>-->
+      <!--<dw-info-content [dwNodes]="infoContent"></dw-info-content>-->
+    <!--</div>-->
+  <!--</main>-->
 <!--</div>-->
+
 
 <div class="flex-container">
   <nav>
-    <dw-nav-content [pathNodeObs]="navProps" [pathNode]="navPathNode" [pathNodeIndex]="navPathNodeIndex" [pathNodes]="navPathNodes" ></dw-nav-content>
+    <dw-nav compInput="franz"></dw-nav>
   </nav>
   <main>
     <div id="main1">
-      <dw-main-content [dwNodes]="mainContent"></dw-main-content>
-      <dw-info-content [dwNodes]="infoContent"></dw-info-content>
+      <dw-main></dw-main>
+      <!--<dw-main [dwNodes]="mainContent"></dw-main>-->
     </div>
   </main>
 </div>

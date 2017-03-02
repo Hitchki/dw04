@@ -14,7 +14,7 @@ import {LoadUserProjectsAction} from '../store/actions'
 @Component({
   selector: 'dw-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.css']
+  styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
 
