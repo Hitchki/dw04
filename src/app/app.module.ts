@@ -54,8 +54,7 @@ import {rootReducer} from './store/reducers/rootReducer'
     BrowserModule,
     CoreModule,
     // CoreModule.forRoot({userName: 'Miss Marple'}),
-
-    StoreModule.provideStore(rootReducer),
+    // StoreModule.provideStore(rootReducer),
 
     FormsModule,
     HttpModule,
@@ -69,8 +68,8 @@ import {rootReducer} from './store/reducers/rootReducer'
     AppRoutingModule,
     //ES6 abbreviated syntax
     StoreModule.provideStore(rootReducer, INITIAL_APPLICATION_STATE),
+    EffectsModule.run(LoadProjectsEffectService),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(LoadProjectsEffectService)
   ],
   exports: [
     BrowserModule,

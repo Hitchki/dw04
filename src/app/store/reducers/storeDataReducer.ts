@@ -1,5 +1,5 @@
 import {USER_PROJECTS_LOADED_ACTION, UserProjectsLoadedAction} from '../actions'
-import {ApplicationState} from '../application-state'
+// import {ApplicationState} from '../application-state'
 import {StoreData} from '../store-data'
 
 export function storeData(state, action) : StoreData {
@@ -14,7 +14,7 @@ export function storeData(state, action) : StoreData {
 
 
 function handleLoadUserProjectsAction(
-  state: ApplicationState,
+  state: StoreData,
   action: UserProjectsLoadedAction): StoreData {
 
   const projectData = action.payload;
