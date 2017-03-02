@@ -47,7 +47,6 @@ export class UserLinkComponent implements OnInit, AfterViewInit {
           // this.userId = fragment.match(/^(.+?)\//g)[0];
           let userId = fragment.slice(0, fragment.indexOf('/'));
           this.fragment = fragment.replace(/^.+?\//,'');
-          // console.debug('!!!this.fragment!!!', this.fragment);
 
           if (userId !== this.userId) {
             this.userId = userId;
@@ -76,10 +75,6 @@ export class UserLinkComponent implements OnInit, AfterViewInit {
           this.projects = this.userDb.projects;
 
           this.centralService.userId = this.userId;
-
-          // console.debug('this loaded userDb', this.userDb);
-          // console.debug('this loaded json', this.userDb);
-          // console.debug('this projects', this.projects);
 
           this.centralService.getPathNodes(this.fragment, this.projects);
         }
@@ -134,9 +129,7 @@ export class UserLinkComponent implements OnInit, AfterViewInit {
       .subscribe(
         fragment => {
           this.fragment = fragment;
-          // console.debug('this.fragment', this.fragment);
           this.userId = this.getUserId();
-          // console.debug('this.userId', this.userId);
 
           this.loadProjectOld();
 
@@ -152,24 +145,18 @@ export class UserLinkComponent implements OnInit, AfterViewInit {
 
           this.userDb = userDb;
           this.projects = this.userDb.projects;
-          // console.debug('this loaded userDb', this.userDb);
-          // console.debug('this.projects', this.userDb.projects);
-          // console.debug('this.projects', this.userDb.projects);
-          // console.table(this.userDb.projects);
         }
       );
 
     this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
       contentNodes => {
         this.mainContent = contentNodes;
-        // console.debug('this.mainContent', this.mainContent);
       }
     );
 
     this.loadNodeByUrl('vwl/projects/0/subprojects/0/normtext').subscribe(
       contentNodes => {
         // this.infoContent = contentNodes;
-        // console.debug('this.infoContent', this.infoContent);
       }
     );
   }
