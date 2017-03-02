@@ -19,7 +19,7 @@ export class LoadProjectsEffectService {
 
   @Effect() userProjects$: Observable<Action> = this.actions$
     .ofType(LOAD_USER_PROJECTS_ACTION)
-    .debug("action received")
+    .debug("action received!!!!!!!")
     .switchMap(action => this.centralService.pathNodes$)
     // .debug("data received via the HTTP request xxxxxxx")
     .map(pathNodes => new UserProjectsLoadedAction(pathNodes) );

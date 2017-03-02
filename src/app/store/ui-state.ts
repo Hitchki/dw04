@@ -1,19 +1,18 @@
-import {CompInput} from '../content/content.interfaces'
+import {CompVM} from '../content/content.interfaces'
 
 export interface ComponentStates {
   userId:number;
-  // currentThreadId: number;
-  navCompVM: CompInput;
-  mainCompVM: CompInput;
+  navCompVM: CompVM;
+  mainCompVM: CompVM;
 }
 
 export interface UiState {
     userId:number;
-    // currentThreadId: number;
+    pathData: string;
 }
 
 
 export const INITIAL_UI_STATE: UiState = {
-    userId: undefined,
-    // currentThreadId: undefined
+  userId: undefined,
+  pathData: undefined
 };

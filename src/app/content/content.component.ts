@@ -53,11 +53,6 @@ export class ContentComponent implements OnInit {
     this.compVM = 'dummyData';
     // this.mainVM = 'dummyData';
 
-    // this.store.dispatch(new LoadUserProjectsAction());
-
-    // const dummyData =   { pathData: { selectedPathNodeIndex: 12 } };
-
-
     // this.centralService.pathNodes$.subscribe(
     //   pathNodes => this.store.dispatch(
     //     new UserProjectsLoadedAction(pathNodes)
@@ -65,8 +60,14 @@ export class ContentComponent implements OnInit {
     //   )
     // );
 
+    this.store.dispatch(new LoadUserProjectsAction());
+
+    // const dummyData =   { pathData: { selectedPathNodeIndex: 12 } };
+
     // this.navProps = new Subject<any>();
-    this.centralService.pathNodes$.subscribe(
+    this.centralService.pathNodes$
+      // .debug('pathNodes$')
+      .subscribe(
       pathNodes => {
         this.pathNodes = pathNodes;
 
