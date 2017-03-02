@@ -57,6 +57,7 @@ export class ContentComponent implements OnInit {
 
     this.store.dispatch(new LoadUserProjectsAction());
 
+
     // this.centralService.pathNodes$.subscribe(
     //   pathNodes => this.store.dispatch(
     //     new UserProjectsLoadedAction(pathNodes)
